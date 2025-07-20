@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Portfolio</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="styles.css" />
+		<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+		<script>
+			$(window).on("load pageshow", function () {
+				$("body").fadeIn();
+			});
+			$(
+				"a:not([href*=javascript]):not([href*=\\#]):not(.fancybox):not([target]):not([data-fancybox])"
+			).click(function () {
+				$("body").fadeOut();
+				let url = $(this).attr("href");
+				window.setTimeout(function () {
+					window.location.href = url;
+				}, 500);
+				return false;
+			});
+		</script>
+	</head>
+	<body id="top">
+		<header>
+			<nav class="nav-menu">
+				<a href="index.html" id="logo">OLEKSANDR K.</a>
+				<ul>
+					<li><a href="index.html#portfolio">Work</a></li>
+					<!-- <li><a href="#resume">About</a></li> -->
+					<li><a href="#get-in-touch">Get in touch</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<main>
+			<!-- Main content sections will go here -->
+			<section id="project-header" class="foody-bag">
+				<div id="project-passport">
+					<div class="project-passport-details">
+						<img src="images/logo-foodybag.png" alt="Project 1" />
+						<h2 id="project-title">Helping you to fight food waste</h2>
+						<p class="second-line">Feb 2023 - Ongoing</p>
+						<div class="project-labels">
+							<div class="my-role">
+								<p class="text-translucent">Role</p>
+								<p class="accent">UX/UI, Brand, Research</p>
+							</div>
+							<div class="platform">
+								<p class="text-translucent">Platform</p>
+								<p class="accent">Flutter (iOS, Android), Web</p>
+							</div>
+						</div>
+					</div>
+					<img
+						src="images/promo-foodybag.png"
+						alt="Project 1"
+						class="hero-image"
+					/>
+				</div>
+			</section>
+			<section id="case-study">
+				<div class="case-study-block">
+					<div class="block-content">
+						<div class="overview">
+							<p>
+								Foody Bag is a mobile app that connects consumers with local
+								food businesses offering surplus meals at a discount. The
+								platform helps reduce food waste while allowing users to enjoy
+								high-quality food at lower prices. As a designer, my goal was to
+								modernize the app's interface, enhance usability, and build
+								features that drive user engagement and operational efficiency.
+							</p>
+						</div>
+					</div>
+					<div class="block-content">
+						<h4>My role & contribution</h4>
+						<p>
+							As the product designer, I was responsible for elevating the app’s
+							UI and UX, ensuring a consistent visual identity, and introducing
+							new features to better serve both users and store owners. My core
+							contributions included:
+						</p>
+						<ul>
+							<li>
+								Establishing a scalable design system with clear visual
+								guidelines
+							</li>
+							<li>Refreshing the logo for the store owner application</li>
+							<li>Redesigning the order flow for a smoother experience</li>
+							<li>
+								Creating the Impact section to increase user engagement through
+								gamification
+							</li>
+							<li>
+								Designing the analytics dashboard to support store owners in
+								managing surplus inventory
+							</li>
+							<li>
+								Updating the stock management section for easier planning and
+								adjustments
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="case-study-block accent-bg">
+					<div class="block-content">
+						<h4>Project goal</h4>
+						<p>
+							The goal of Foody Bag was to improve the experience of buying and
+							selling surplus food through a simple, user-friendly mobile app.
+							For businesses, the app offers an efficient way to minimize food
+							waste and recover costs. For consumers, it provides affordable
+							access to quality meals. By bridging this gap, the platform
+							supports both sustainability and smart consumption.
+						</p>
+						<div class="citation">
+							<p>
+								Planet-loving food retailers are super concerned with the food
+								waste they produce, so we help them sell it, which means you can
+								buy it usually for a third of the price or half of its price.
+							</p>
+						</div>
+					</div>
+					<div class="full-size-image">
+						<img src="images/fb-surplus.png" />
+					</div>
+				</div>
+				<div class="case-study-block">
+					<div class="block-content">
+						<h4>Problem</h4>
+						<p>
+							Before the redesign, Foody Bag struggled with several usability
+							and design issues that limited its effectiveness:
+						</p>
+
+						<div class="feature-cards">
+							<div class="feature-card">
+								<img src="images/icn-design-system.svg" />
+								<div>
+									<p class="accent">Outdated design system</p>
+									<p>
+										Inconsistent design system, leading to visual
+										inconsistencies across the app.
+									</p>
+								</div>
+							</div>
+							<div class="feature-card">
+								<img src="images/icn-shopping-bag.svg" />
+								<div>
+									<p class="accent">Confusing order flow</p>
+									<p>
+										Confusing Order Details flow, making it difficult for users
+										to track and manage their purchases.
+									</p>
+								</div>
+							</div>
+							<div class="feature-card">
+								<img src="images/icn-arrow-shrink.svg" />
+								<div>
+									<p class="accent">Engagement gap</p>
+									<p>
+										Missing an opportunity to engage and motivate users through
+										gamification.
+									</p>
+								</div>
+							</div>
+							<div class="feature-card">
+								<img src="images/icn-analytics.svg" />
+								<div>
+									<p class="accent">No analytics tool</p>
+									<p>
+										No advanced analytics tools for store owners, preventing
+										them from managing surplus inventory.
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="block-content">
+						<h4>Target audience</h4>
+						<div class="target-audience">
+							<div class="target-audience-card">
+								<div class="number">01</div>
+								<div class="content">
+									<p class="accent">Regular consumers</p>
+									<p>
+										Looking to save money, especially students, families, and
+										budget-conscious shoppers.
+									</p>
+								</div>
+							</div>
+							<div class="target-audience-card">
+								<div class="number">02</div>
+								<div class="content">
+									<p class="accent">Individuals</p>
+									<p>
+										Environmentally conscious individuals who want to contribute
+										to a sustainable future.
+									</p>
+								</div>
+							</div>
+							<div class="target-audience-card">
+								<div class="number">03</div>
+								<div class="content">
+									<p class="accent">Small-sized business</p>
+									<p>
+										Small and medium-sized business owners who need an efficient
+										way to manage and sell surplus food.
+									</p>
+								</div>
+							</div>
+							<div class="target-audience-card">
+								<div class="number">04</div>
+								<div class="content">
+									<p class="accent">Food enthusiasts</p>
+									<p>
+										Bargain hunters interested in discovering quality meals at
+										reduced prices.
+									</p>
+								</div>
+							</div>
+							<div class="target-audience-card">
+								<div class="number">05</div>
+								<div class="content">
+									<p class="accent">Organizations</p>
+									<p>
+										Socially responsible organizations that support
+										sustainability initiatives and seek to minimize food waste.
+									</p>
+								</div>
+							</div>
+							<div class="target-audience-card">
+								<div class="number">06</div>
+								<div class="content">
+									<p class="accent">Australian market</p>
+									<p>
+										The app is designed for the Australian market, with
+										potential for future expansion
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="case-study-block accent-bg">
+					<div class="block-content">
+						<h4>Research</h4>
+						<p>
+							The redesign process was informed by continuous user feedback and
+							hands-on collaboration with stakeholders. We also conducted a
+							competitive analysis of similar apps to identify industry
+							standards, uncover gaps, and define opportunities for Foody Bag to
+							stand out. This combination of insights helped ensure a
+							user-centered approach aligned with both market trends and user
+							expectations.
+						</p>
+					</div>
+					<div class="full-size-image">
+						<img src="images/fb-research.png" />
+					</div>
+				</div>
+				<div class="case-study-block">
+					<div class="block-content">
+						<h4>Design System</h4>
+						<p>
+							I created a unified design system with clearly defined primary and
+							secondary colors, typography, and reusable components. This
+							brought visual consistency across both apps, strengthened brand
+							identity, and improved accessibility. The system also made future
+							updates more efficient and scalable.
+						</p>
+					</div>
+					<div class="full-size-image">
+						<img src="images/fb-design-system.png" />
+					</div>
+					<div class="block-content">
+						<h4>Logo update</h4>
+						<p>
+							Redesigned the Store Owner app logo to improve brand recognition
+							and create a stronger visual identity. The updated logo aligns
+							with modern branding standards, making the app more appealing and
+							recognizable to store owners and customers alike.
+						</p>
+						<img src="images/fb-logos.png" />
+					</div>
+				</div>
+				<div class="case-study-block accent-bg">
+					<div class="block-content">
+						<h4>Order flow</h4>
+						<p>
+							I redesigned the entire order flow - from placement to in-store
+							pickup to make the process more intuitive and user-friendly. Key
+							improvements included clearer order tracking, simplified pickup
+							confirmation, and better visibility of important details. These
+							changes reduced user friction and improved the overall experience
+							for customers.
+						</p>
+					</div>
+					<div class="full-size-image">
+						<img src="images/fb-order-flow.png" />
+					</div>
+				</div>
+				<div class="case-study-block">
+					<div class="block-content">
+						<h4>Impact tab</h4>
+						<p>
+							To increase engagement, I designed a new “Impact” tab that
+							gamifies user achievements. It lets users track how much money
+							they’ve saved, how many friends they’ve invited, and their
+							contribution to reducing food waste.
+						</p>
+						<img src="images/fb-impact-tab.png" />
+						<p>
+							The tab features custom illustrations and progress indicators to
+							celebrate milestones. These visual rewards create a sense of
+							progress and motivation, encouraging users to return and stay
+							active in the app.
+						</p>
+						<img src="images/fb-illustrations.png" />
+					</div>
+					<div class="block-content">
+						<h4>Analytics</h4>
+						<p>
+							I designed an analytics dashboard to help store owners better
+							understand their business performance. It provides real-time
+							insights into sales, revenue, forecasts, product popularity, and
+							underperforming items.
+						</p>
+						<p>
+							With this feature, store owners can make smarter, data-driven
+							decisions, optimize inventory, and minimize food waste more
+							effectively.
+						</p>
+					</div>
+				</div>
+				<div class="case-study-block accent-bg">
+					<div class="full-size-image">
+						<img src="images/fb-analytics.png" />
+					</div>
+				</div>
+				<div class="case-study-block">
+					<div class="block-content">
+						<h4>Stock</h4>
+						<p>
+							We improved stock management by letting store owners plan their
+							inventory for the upcoming week. This helps them get ready for
+							changes in demand.
+						</p>
+						<p>
+							We also added a quick way to adjust the stock for the current day,
+							making it faster and easier to update inventory on the go.
+						</p>
+						<div class="mini-gallery">
+							<img src="images/stock-screen-01.png" />
+							<video autoplay muted loop playsinline>
+								<source src="images/modify-qty.mp4" type="video/mp4" />
+							</video>
+							<img src="images/stock-screen-02.png" />
+						</div>
+					</div>
+					<div class="block-content">
+						<h4>Proposed сhanges</h4>
+						<div class="feature-cards">
+							<div class="feature-card">
+								<img src="images/icn-calendar.svg" />
+								<div>
+									<p class="accent">Planning</p>
+									<p>
+										Store owners can now plan inventory for the week, ensuring
+										better preparation for demand.
+									</p>
+								</div>
+							</div>
+							<div class="feature-card">
+								<img src="images/icn-box.svg" />
+								<div>
+									<p class="accent">Quick adjustment</p>
+									<p>
+										Store owners can now quickly adjust daily stock levels with
+										an easier, more intuitive design.
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="case-study-block accent-bg">
+					<div class="block-content">
+						<h4>Reflection</h4>
+						<p>
+							This project helped me grow both as a designer and a collaborator
+							in an international team. I improved my skills in building and
+							maintaining a design system while enhancing communication with
+							stakeholders across different countries. Analyzing and redesigning
+							an existing app with significant UX/UI issues was challenging but
+							rewarding, pushing me to adopt a more analytical and
+							business-focused mindset. If I were to start over, I would
+							implement a design system from the beginning to ensure consistency
+							and efficiency. Overall, this experience deepened my understanding
+							of balancing user needs with business goals and strengthened my
+							holistic approach to design.
+						</p>
+					</div>
+					<div class="reflection">
+						<img src="images/fb-reflection.png" />
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<!-- Footer -->
+		<footer>
+			<div id="get-in-touch">
+				<h4>Get in touch</h4>
+				<p>Have a project in mind or just want to say hi? Let’s talk.</p>
+				<h6 class="accent">akhitruk@gmail.com</h6>
+				<div class="socials">
+					<a
+						href="https://www.linkedin.com/in/alexitruk"
+						target="_blank"
+						title="Visit my LinkedIn profile"
+						><img src="images/icon_linkedin.svg" alt="LinkedIn icon"
+					/></a>
+					<a
+						href="https://www.instagram.com/oleksandrkhytruk"
+						target="_blank"
+						title="Visit my Instagram profile"
+						><img src="images/icon_instagram.svg" alt="Instagram icon"
+					/></a>
+					<a
+						href="https://www.youtube.com/@okhytruk"
+						target="_blank"
+						title="Visit my YouTube channel"
+						><img src="images/icon_youtube.svg" alt="YouTube icon"
+					/></a>
+				</div>
+				<div id="crafter-with-love">
+					<p>
+						&copy; <span id="current-year"></span> Crafted by Oleksandr Khytruk.
+						Powered by coffee.
+					</p>
+				</div>
+			</div>
+		</footer>
+
+		<a href="#top" id="back-to-top" title="Back to top" class="scaling-effect"
+			><img src="images/icn-caret-up.svg"
+		/></a>
+		<script>
+			document.getElementById("current-year").textContent =
+				new Date().getFullYear();
+
+			// Show or hide the back-to-top button
+			const backToTopButton = document.getElementById("back-to-top");
+			window.addEventListener("scroll", () => {
+				if (window.pageYOffset > 300) {
+					backToTopButton.style.opacity = "1";
+				} else {
+					backToTopButton.style.opacity = "0";
+				}
+			});
+
+			// Smooth scroll to top when button clicked
+			backToTopButton.addEventListener("click", (e) => {
+				e.preventDefault();
+				window.scrollTo({ top: 0, behavior: "smooth" });
+			});
+		</script>
+	</body>
+</html>

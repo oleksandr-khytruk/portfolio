@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Portfolio</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="styles.css" />
+		<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+		<script>
+			$(window).on("load pageshow", function () {
+				$("body").fadeIn();
+			});
+			$(
+				"a:not([href*=javascript]):not([href*=\\#]):not(.fancybox):not([target]):not([data-fancybox])"
+			).click(function () {
+				$("body").fadeOut();
+				let url = $(this).attr("href");
+				window.setTimeout(function () {
+					window.location.href = url;
+				}, 500);
+				return false;
+			});
+		</script>
+	</head>
+	<body id="top">
+		<header>
+			<nav class="nav-menu">
+				<a href="index.html" id="logo">OLEKSANDR K.</a>
+				<ul>
+					<li><a href="index.html#portfolio">Work</a></li>
+					<li><a href="#get-in-touch">Get in touch</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<main>
+			<!-- Hero message and photo -->
+			<section id="hero">
+				<div class="card-content">
+					<h2>Hey, I'm Oleksandr</h2>
+					<h6>Product Designer</h6>
+					<p class="superhero">
+						Focused on mobile applications, I craft thoughtful user experiences,
+						build design systems, and turn complex requirements into intuitive
+						digital solutions.
+					</p>
+					<div class="links">
+						<a href="index.html#get-in-touch" class="primary-button">Get in touch</a>
+						<a href="oleksandr-khytruk-cv-2025.pdf" target="_blank" class="tertiary-button">Resume<span class="trailing external"></span></a>
+					</div>
+				</div>
+				<div class="hero-interactive">
+					<img src="images/cursor-comment.png" class="cursor" />
+					<img src="images/hero.png" alt="Profile Picture" />
+				</div>
+			</section>
+
+			<!-- Portfolio items and case studies -->
+			<section id="portfolio">
+				<div class="projects-container">
+					<!-- Foody Bag -->
+					<div class="project">
+						<div class="project-details">
+							<p>Feb 2023 - Ongoing</p>
+							<h4>Foody Bag - helping you to fight food waste</h4>
+							<div class="labels">
+								<span>Research</span>
+								<span>UX/UI</span>
+								<span>Branding</span>
+							</div>
+							<p>
+								Foody Bag is a mobile app that helps reduce food waste by
+								allowing users to purchase surplus food from bakeries, cafes,
+								restaurants, supermarkets, and hotels at a significantly reduced
+								price. The app benefits both businesses, by minimizing waste,
+								and consumers, by offering affordable, high-quality food.
+							</p>
+							<p>
+								My primary role in this project was to enhance the existing
+								application by improving its UI/UX and creating a more appealing
+								and functional design.
+							</p>
+							<div class="links">
+								<a href="foody-bag.html" class="primary-button">View case study</a>
+								<a href="https://www.foodybag.com.au/" target="_blank" class="tertiary-button">Website<span class="trailing external"></span></a>
+							</div>
+						</div>
+						<a href="foody-bag.html" class="project-visual" title="View Foody Bag Project"><img src="images/foodybag.png" alt="Foody Bag Project - Food Waste Reduction App"/></a>
+					</div>
+
+					<!-- The Maintain app -->
+					<div class="project">
+						<div class="project-details">
+							<p>May 2023 - Sep 2024</p>
+							<h4>
+								The Maintain app - Connecting property owners and builders
+							</h4>
+							<div class="labels">
+								<span>Wireframing</span>
+								<span>Research</span>
+								<span>UX/UI</span>
+								<span>Branding</span>
+							</div>
+							<p>
+								The Maintain App is a subscription-based property maintenance
+								solution designed to streamline communication between builders
+								and property owners.
+							</p>
+							<p>
+								As the UX/UI Designer for The Maintain App, I was responsible
+								for defining the overall user experience and visual direction,
+								ensuring a consistent, intuitive, and accessible interface
+								across both client and worker applications.
+							</p>
+							<div class="links">
+								<a href="the-maintain-app.html" class="primary-button" title="Case study link for The Maintain App project">View case study</a>
+							</div>
+						</div>
+						<a href="the-maintain-app.html" class="project-visual" title="View The Maintain App Project"><img src="images/tma.png" alt="The Maintain App Project - Property Maintenance Solution"/></a>
+					</div>
+
+					<!-- VisionPro Golf game -->
+					<div class="project">
+						<div class="project-details">
+							<p>March 2024</p>
+							<h4>Golf Reflex - Bringing fun to spatial computing</h4>
+							<div class="labels">
+								<span>Research</span>
+								<span>UX/UI</span>
+							</div>
+							<p>
+								Golf Reflex is a small experimental VR game built for Apple
+								Vision Pro. The goal was to create an engaging and easy-to-use
+								experience for first-time players as part of an offline golf
+								event.
+							</p>
+							<p>
+								As the UX/UI designer, I was responsible for shaping the entire
+								product experience - from defining the core concept and
+								interaction model to designing the interface and assets for
+								Vision Pro.
+							</p>
+							<div class="links">
+								<a href="golf-reflex.html" class="primary-button">View case study</a>
+							</div>
+						</div>
+						<a href="golf-reflex.html" class="project-visual" title="View Golf Reflex Project"><img src="images/golf.png" alt="Golf Reflex Project"/></a>
+					</div>
+				</div>
+			</section>
+
+			<!-- Job Timeline -->
+			<section id="timeline-container">
+				<h4>Experience</h4>
+				<div class="timeline">
+					<div class="timeline-point">
+						<div class="timeline-date">Oct 2010 - Dec 2012</div>
+						<div class="timeline-company">INTERSOG</div>
+						<div class="timeline-role">UI Designer</div>
+					</div>
+					<div class="timeline-point">
+						<div class="timeline-date">Dec 2012 - Oct 2015</div>
+						<div class="timeline-company">Provectus Inc.</div>
+						<div class="timeline-role">UI/UX Designer</div>
+					</div>
+					<div class="timeline-point">
+						<div class="timeline-date">Oct 2015 - Nov 2016</div>
+						<div class="timeline-company">Looksery Inc.</div>
+						<div class="timeline-role">Lead Designer</div>
+					</div>
+					<div class="timeline-point">
+						<div class="timeline-date">Nov 2016 - Aug 2022</div>
+						<div class="timeline-company">Snap Inc.</div>
+						<div class="timeline-role">Production Manager</div>
+					</div>
+					<div class="timeline-point">
+						<div class="timeline-date">Nov 2022 - Today</div>
+						<div class="timeline-company">Trinetix</div>
+						<div class="timeline-role">Sr. UI/UX Designer</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Time Investments -->
+			<section id="investments">
+				<h4>Time invested</h4>
+				<div class="game-cards">
+					<div class="game-card">
+						<img
+							src="images/invest-ac.png"
+							alt="Assassing’s Creed"
+							title="Assassing’s Creed"
+						/>
+						<div class="game-card-details">
+							<p>Assassing’s Creed</p>
+							<p class="accent"><strong>214 hours</strong></p>
+						</div>
+					</div>
+					<div class="game-card">
+						<img
+							src="images/invest-dl.png"
+							alt="Dying Light 2"
+							title="Dying Light 2"
+						/>
+						<div class="game-card-details">
+							<p>Dying Light 2</p>
+							<p class="accent"><strong>89 hours</strong></p>
+						</div>
+					</div>
+					<div class="game-card">
+						<img
+							src="images/invest-tlos.png"
+							alt="The Last of Us"
+							title="The Last of Us"
+						/>
+						<div class="game-card-details">
+							<p>The Last of Us</p>
+							<p class="accent"><strong>21 hours</strong></p>
+						</div>
+					</div>
+					<div class="game-card">
+						<img
+							src="images/invest-nfs.png"
+							alt="Need for Speed Heat"
+							title="Need for Speed Heat"
+						/>
+						<div class="game-card-details">
+							<p>Need for Speed Heat</p>
+							<p class="accent"><strong>28 hours</strong></p>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<!-- Footer -->
+		<footer>
+			<div id="get-in-touch">
+				<h4>Get in touch</h4>
+				<p>Have a project in mind or just want to say hi? Let’s talk.</p>
+				<h6 class="accent">akhitruk@gmail.com</h6>
+				<div class="socials">
+					<a
+						href="https://www.linkedin.com/in/alexitruk"
+						target="_blank"
+						title="Visit my LinkedIn profile"
+						><img src="images/icon_linkedin.svg" alt="LinkedIn icon"
+					/></a>
+					<a
+						href="https://www.instagram.com/oleksandrkhytruk"
+						target="_blank"
+						title="Visit my Instagram profile"
+						><img src="images/icon_instagram.svg" alt="Instagram icon"
+					/></a>
+					<a
+						href="https://www.youtube.com/@okhytruk"
+						target="_blank"
+						title="Visit my YouTube channel"
+						><img src="images/icon_youtube.svg" alt="YouTube icon"
+					/></a>
+				</div>
+				<div id="crafter-with-love">
+					<p>
+						&copy; <span id="current-year"></span> Crafted by Oleksandr Khytruk.
+						Powered by coffee.
+					</p>
+				</div>
+			</div>
+		</footer>
+
+		<a href="#top" id="back-to-top" title="Back to top" class="scaling-effect"
+			><img src="images/icn-caret-up.svg"
+		/></a>
+		<script>
+			document.getElementById("current-year").textContent =
+				new Date().getFullYear();
+
+			// Show or hide the back-to-top button
+			const backToTopButton = document.getElementById("back-to-top");
+			window.addEventListener("scroll", () => {
+				if (window.pageYOffset > 300) {
+					backToTopButton.style.opacity = "1";
+				} else {
+					backToTopButton.style.opacity = "0";
+				}
+			});
+
+			// Smooth scroll to top when button clicked
+			backToTopButton.addEventListener("click", (e) => {
+				e.preventDefault();
+				window.scrollTo({ top: 0, behavior: "smooth" });
+			});
+		</script>
+	</body>
+</html>

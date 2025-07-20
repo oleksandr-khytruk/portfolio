@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Portfolio</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="styles.css" />
+		<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+		<script>
+			$(window).on("load pageshow", function () {
+				$("body").fadeIn();
+			});
+			$(
+				"a:not([href*=javascript]):not([href*=\\#]):not(.fancybox):not([target]):not([data-fancybox])"
+			).click(function () {
+				$("body").fadeOut();
+				let url = $(this).attr("href");
+				window.setTimeout(function () {
+					window.location.href = url;
+				}, 500);
+				return false;
+			});
+		</script>
+	</head>
+	<body>
+		<header>
+			<nav class="nav-menu">
+				<a href="index.html" id="logo">OLEKSANDR K.</a>
+				<ul>
+					<li><a href="index.html#portfolio">Work</a></li>
+					<!-- <li><a href="#resume">About</a></li> -->
+					<li><a href="#get-in-touch">Get in touch</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<main>
+			<!-- Main content sections will go here -->
+			<section id="project-header" class="golf-reflex">
+				<div id="project-passport">
+					<div class="project-passport-details">
+						<img src="images/logo-golf.png" alt="Project 1" />
+						<h2 id="project-title">Bringing fun to spatial computing</h2>
+						<p class="second-line">March 2024</p>
+						<div class="project-labels">
+							<div class="my-role">
+								<p class="text-translucent">Role</p>
+								<p class="accent">UX/UI, Research</p>
+							</div>
+							<div class="platform">
+								<p class="text-translucent">Platform</p>
+								<p class="accent">VisionOS</p>
+							</div>
+						</div>
+					</div>
+					<img src="images/promo-golf.png" alt="Project 1" class="hero-image" />
+				</div>
+			</section>
+			<section id="case-study">
+				<div class="case-study-block">
+					<div class="block-content">
+						<div class="overview">
+							<p>
+								In this case study, I’d like to share our experience working on
+								a small but intense XR experiment - a mini-golf game built for
+								Apple Vision Pro. I’ll walk you through the project’s context,
+								the UX challenges we faced, and the lessons we learned from
+								building an MVP in just two weeks.
+							</p>
+						</div>
+					</div>
+					<div class="block-content">
+						<h4>My role & contribution</h4>
+						<p>
+							As the UX/UI designer, I was responsible for shaping the entire
+							product experience - from defining the core concept and
+							interaction model to designing the interface and assets for Vision
+							Pro.
+						</p>
+						<p>
+							I collaborated closely with the developer to adapt 2D designs into
+							a 3D spatial environment, ensured gesture-based controls were
+							intuitive, and helped tailor the app for quick, event-based
+							engagement.
+						</p>
+					</div>
+				</div>
+				<div class="case-study-block accent-bg">
+					<div class="block-content">
+						<h4>The Ask</h4>
+						<p>
+							This entire project began with an unexpected pitch from
+							leadership:
+						</p>
+						<div class="citation">
+							<p>
+								What if we created a fun, interactive Vision Pro experience for
+								a tech showcase at the Emerald Valley Golf Classic in Oregon?
+							</p>
+						</div>
+						<p>
+							The event, scheduled for April 15 in Eugene, was a high-end
+							networking event targeting potential enterprise clients. Our goal?
+							To use Vision Pro not just as a conversation starter, but as a
+							living demo of our team's creativity, tech capabilities, and
+							design thinking.
+						</p>
+						<br />
+						<p class="accent"><strong>The concept:</strong></p>
+						<p>
+							A light, beginner-friendly VR experience where users could try a
+							golf swing in mixed reality, guided by simple visual instructions.
+						</p>
+						<img src="images/golf-01.png" />
+					</div>
+				</div>
+				<div class="case-study-block">
+					<div class="block-content">
+						<h4>Project Scope & Timeline</h4>
+						<p>
+							There was one major challenge. We had only 14 days to design and
+							ship a working MVP.
+						</p>
+						<p>In that short time, we had to:</p>
+						<ul>
+							<li>
+								Learn the fundamentals of golf mechanics (like proper stance and
+								swing form)
+							</li>
+							<li>Understand spatial design on Vision Pro</li>
+							<li>
+								Define interaction patterns that worked without physical
+								controllers
+							</li>
+							<li>Deliver something both delightful and demo-ready</li>
+						</ul>
+						<br />
+						<p>
+							We knew this wouldn’t be a polished game, but it had to be
+							functional, intuitive, and visually compelling.
+						</p>
+						<img src="images/golf-swing.png" />
+					</div>
+				</div>
+
+				<div class="case-study-block accent-bg">
+					<div class="block-content">
+						<h4>UX Challenges</h4>
+						<p class="accent">
+							<strong>1. No Direct Access to Vision Pro</strong>
+						</p>
+						<p>
+							Only one developer on our team had access to the device, which
+							made design validation extremely tricky.
+						</p>
+						<p>
+							We couldn't test interactions ourselves, meaning every layout or
+							gesture decision was based on assumptions, documentation, and
+							secondhand feedback.
+						</p>
+						<br />
+						<p class="accent"><strong>2. Designing for Gestures</strong></p>
+						<p>
+							One of our concepts assumed that players’ hands would be occupied,
+							as they physically mimic real golf swings. Because of this,
+							traditional hand gestures for navigation weren’t practical. We
+							explored alternative ways to progress through tutorial steps or
+							reset the game without requiring touch input.
+						</p>
+						<p>Key questions we considered:</p>
+						<ul>
+							<li>
+								How can players advance to the next instruction hands-free?
+							</li>
+							<li>What happens if someone exits the app mid-swing?</li>
+							<li>
+								Should UI elements be mirrored for left- and right-handed users?
+							</li>
+						</ul>
+						<br />
+						<p class="accent"><strong>3. Identity & Onboarding</strong></p>
+						<p>
+							Vision Pro uses optical authentication to unlock the device based
+							on eye and face scanning inside the headset. There’s no multi-user
+							or guest mode, only the registered user can unlock it. Shared use
+							requires re-authentication, limiting convenience in group
+							settings.
+						</p>
+						<img src="images/golf-challenges.png" /><br />
+						<h4>Research & Brainstorming</h4>
+						<p>Without access to the hardware, we relied heavily on:</p>
+						<ul>
+							<li>Apple’s official visionOS Human Interface Guidelines</li>
+							<li>Developer blogs and early adopters’ reviews</li>
+							<li>YouTube demos and tear-downs from creators</li>
+							<li>Analysis of early Vision Pro apps and games</li>
+						</ul>
+						<p>
+							<br />We documented key interaction patterns, gesture libraries,
+							and performance bottlenecks other creators had run into, which
+							helped us avoid some of the same mistakes.
+						</p>
+					</div>
+				</div>
+
+				<div class="case-study-block">
+					<div class="block-content">
+						<h4>Concepting</h4>
+						<p>
+							With only two weeks, we had to be smart about scope. After initial
+							brainstorming, we narrowed down two core directions:
+						</p>
+						<br />
+						<p class="accent">
+							<strong>Concept 1: Guided Golf Training</strong>
+						</p>
+						<p>
+							A semi-realistic simulation where the user holds a virtual club
+							and follows on-screen prompts to practice posture, aim, and swing
+							timing. The system would provide basic visual feedback and track
+							"shots" over a few rounds.
+						</p>
+						<p>
+							This concept leaned more toward education but introduced
+							complexity in both physics and gesture design — things we didn’t
+							have time to fully prototype.
+						</p>
+						<br />
+						<p class="accent">
+							<strong>Concept 2: Smash Golf - A Fun Reflex Challenge</strong>
+						</p>
+						<p>
+							A casual arcade-style game where the user deflects golf balls
+							coming toward them using only their hands. The more balls they
+							deflect, the higher their score. Surrounding 3D objects (like
+							vases, TVs, or picture frames) could also be “smashed” to earn
+							bonus points.
+						</p>
+						<p>
+							Inspired by games like Fruit Ninja VR and Beat Saber, this concept
+							prioritized fun, speed, and accessibility. Perfect for short demos
+							at a live event.
+						</p>
+						<p>After a quick team review, we chose Concept 2.</p>
+					</div>
+					<div class="full-size-image">
+						<img src="images/golf-refs.png" />
+						<img src="images/golf-02.png" />
+					</div>
+					<div class="block-content">
+						<h4>Crafting the Look & Feel</h4>
+						<p>
+							Even for a lightweight MVP, we wanted the UI to feel polished and
+							branded. Key UI elements included:
+						</p>
+						<ul>
+							<li>
+								A circular countdown timer displayed in the player’s peripheral
+								vision.
+							</li>
+							<li>
+								A “Game Over” panel with animated particle effects and confetti
+								bursts.
+							</li>
+							<li>
+								Clear iconography and hand-gesture illustrations for basic
+								instructions.
+							</li>
+						</ul>
+						<img src="images/golf-ui.png" />
+					</div>
+				</div>
+
+				<div class="case-study-block accent-bg">
+					<div class="block-content">
+						<h4>Key Takeaways</h4>
+						<p>While it was a small project, the takeaways were huge:</p>
+						<div class="feature-cards">
+							<div class="feature-card">
+								<img src="images/icn-sparkle.svg" />
+								<div>
+									<p class="accent">Simplicity</p>
+									<p>
+										Simple concepts work best in VR, especially when users are
+										trying something for the first time.
+									</p>
+								</div>
+							</div>
+							<div class="feature-card">
+								<img src="images/icn-flask.svg" />
+								<div>
+									<p class="accent">Unpredictable</p>
+									<p>
+										Vision Pro has massive potential, but still lacks maturity
+										in tooling and documentation. Planning extra time for
+										testing is critical.
+									</p>
+								</div>
+							</div>
+							<div class="feature-card">
+								<img src="images/icn-plant.svg" />
+								<div>
+									<p class="accent">Evolving</p>
+									<p>
+										Vision Pro has massive potential, but still lacks maturity
+										in tooling and documentation. Planning extra time for
+										testing is critical.
+									</p>
+								</div>
+							</div>
+							<div class="feature-card">
+								<img src="images/icn-cube.svg" />
+								<div>
+									<p class="accent">Spatial</p>
+									<p>
+										You have to think in 3D. Even if you prototype in 2D, always
+										imagine how UI will behave in space, respond to lighting.
+									</p>
+								</div>
+							</div>
+						</div>
+						<p>
+							<br />Apple’s documentation is gold. Their guidelines saved us
+							time, especially around gesture behavior, depth layering, and
+							contrast ratios.
+						</p>
+					</div>
+					<div class="block-content">
+						<h4>Final Thoughts</h4>
+						<p>
+							This project was a fast, fun, and eye-opening dive into spatial
+							design. While not everything went smoothly, it gave our team
+							hands-on experience with emerging XR platforms and helped us lay
+							the foundation for future, more ambitious immersive projects.
+						</p>
+						<p>
+							We're excited to continue exploring what’s possible with spatial
+							computing and Vision Pro and we now know where to start, what to
+							avoid, and how to keep things light, fun, and intuitive.
+						</p>
+					</div>
+					<div class="reflection">
+						<img src="images/golf-final-thoughts.png" />
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<!-- Footer -->
+		<footer>
+			<div id="get-in-touch">
+				<h4>Get in touch</h4>
+				<p>Have a project in mind or just want to say hi? Let’s talk.</p>
+				<h6 class="accent">akhitruk@gmail.com</h6>
+				<div class="socials">
+					<a
+						href="https://www.linkedin.com/in/alexitruk"
+						target="_blank"
+						title="Visit my LinkedIn profile"
+						><img src="images/icon_linkedin.svg" alt="LinkedIn icon"
+					/></a>
+					<a
+						href="https://www.instagram.com/oleksandrkhytruk"
+						target="_blank"
+						title="Visit my Instagram profile"
+						><img src="images/icon_instagram.svg" alt="Instagram icon"
+					/></a>
+					<a
+						href="https://www.youtube.com/@okhytruk"
+						target="_blank"
+						title="Visit my YouTube channel"
+						><img src="images/icon_youtube.svg" alt="YouTube icon"
+					/></a>
+				</div>
+				<div id="crafter-with-love">
+					<p>
+						&copy; <span id="current-year"></span> Crafted by Oleksandr Khytruk.
+						Powered by coffee.
+					</p>
+				</div>
+			</div>
+		</footer>
+
+		<a href="#top" id="back-to-top" title="Back to top" class="scaling-effect"
+			><img src="images/icn-caret-up.svg"
+		/></a>
+		<script>
+			document.getElementById("current-year").textContent =
+				new Date().getFullYear();
+
+			// Show or hide the back-to-top button
+			const backToTopButton = document.getElementById("back-to-top");
+			window.addEventListener("scroll", () => {
+				if (window.pageYOffset > 300) {
+					backToTopButton.style.opacity = "1";
+				} else {
+					backToTopButton.style.opacity = "0";
+				}
+			});
+
+			// Smooth scroll to top when button clicked
+			backToTopButton.addEventListener("click", (e) => {
+				e.preventDefault();
+				window.scrollTo({ top: 0, behavior: "smooth" });
+			});
+		</script>
+	</body>
+</html>
