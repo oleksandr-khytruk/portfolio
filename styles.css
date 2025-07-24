@@ -111,6 +111,32 @@ nav {
 	font-weight: var(--font-bold);
 }
 
+#logo span {
+	display: inline-flex;
+	flex-direction: row;
+}
+
+#logo .full-name{
+	width: 0;
+	opacity: 0;
+	overflow: hidden;
+	transition: all 0.6s ease;
+}
+
+#logo:hover .full-name {
+	width: 80px;
+	opacity: 1;
+}
+
+#logo .dots{
+	opacity: 1;
+	transition: all 0.6s ease;
+}
+
+#logo:hover .dots{
+	opacity: 0;
+}
+
 .nav-menu ul {
 	padding: 1.5rem 0;
 	display: flex;
@@ -846,6 +872,11 @@ footer {
 		padding-right: 1.5rem;
 	}
 
+	nav{
+		flex-direction: column;
+		padding-top: 1.5rem;
+	}
+
 	#hero {
 		padding-top: 5rem;
 		margin-top: 5rem;
@@ -902,6 +933,10 @@ footer {
 	.project:nth-child(even),
 	.project:nth-child(odd) {
 		flex-direction: column-reverse;
+	}
+
+	.project {
+		padding: 3rem 0;
 	}
 
 	.timeline {
