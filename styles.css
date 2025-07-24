@@ -65,7 +65,7 @@ header {
 
 nav,
 #hero,
-#portfolio,
+.project,
 #timeline-container,
 #investments,
 #get-in-touch,
@@ -395,7 +395,8 @@ p {
 .project {
 	display: flex;
 	gap: 4rem;
-	padding: 6rem 0;
+	padding-top: 6rem;
+	padding-bottom: 6rem;
 	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
