@@ -114,6 +114,7 @@ nav {
 #logo span {
 	display: inline-flex;
 	flex-direction: row;
+	letter-spacing: normal;
 }
 
 #logo .full-name{
@@ -124,7 +125,7 @@ nav {
 }
 
 #logo:hover .full-name {
-	width: 79px;
+	width: 78px;
 	opacity: 1;
 }
 
