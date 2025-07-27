@@ -420,7 +420,49 @@
 			<div id="get-in-touch">
 				<h4>Get in touch</h4>
 				<p>Have a project in mind or just want to say hi? Let’s talk.</p>
-				<h6 class="accent">akhitruk@gmail.com</h6>
+				<h6 class="accent">
+					<a href="#" class="copy-action" onclick="copyEmail(event)">
+						akhitruk@gmail.com
+						<span><img src="images/icn-copy.svg" alt="Copy email"></span>
+					</a>
+					<script>
+						function copyEmail(e) {
+							e.preventDefault();
+							navigator.clipboard.writeText('akhitruk@gmail.com').then(() => {
+								// Show toast notification
+								const toast = document.createElement('div');
+								toast.textContent = 'Email copied!';
+								toast.style.cssText = `
+									position: fixed;
+									bottom: 40px;
+									left: 50%;
+									transform: translateX(-50%);
+									background: #333;
+									color: white;
+									padding: 12px 24px;
+									border-radius: 4px;
+									z-index: 1000;
+									opacity: 0;
+									transition: opacity 0.3s ease;
+								`;
+								document.body.appendChild(toast);
+								
+								// Fade in
+								setTimeout(() => {
+									toast.style.opacity = '1';
+								}, 10);
+								
+								// Fade out and remove
+								setTimeout(() => {
+									toast.style.opacity = '0';
+									setTimeout(() => {
+										document.body.removeChild(toast);
+									}, 300);
+								}, 2000);
+							});
+						}
+					</script>
+				</h6>
 				<div class="socials">
 					<a
 						href="https://www.linkedin.com/in/alexitruk"
@@ -444,7 +486,7 @@
 				<div id="crafter-with-love">
 					<p>
 						&copy; <span id="current-year"></span> Crafted by Oleksandr Khytruk.
-						Powered by coffee.
+						Powered by coffee ☕
 					</p>
 				</div>
 			</div>
