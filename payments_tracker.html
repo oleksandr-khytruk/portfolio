@@ -511,7 +511,11 @@
       z-index: 50;
     }
 
-    .dialog-backdrop.open { display: flex; }
+    .dialog-backdrop.open { display: flex !important; }
+
+    #deleteConfirmBackdrop {
+      z-index: 90;
+    }
 
     .dialog {
       width: min(640px, 100%);
@@ -776,6 +780,24 @@
       justify-content: flex-end;
       gap: 10px;
       margin-top: 18px;
+    }
+
+    .dialog-text {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .btn-danger {
+      background: var(--red-text);
+      border-color: var(--red-text);
+      color: #fff;
+    }
+
+    .btn-danger:hover {
+      background: #b91c1c;
+      border-color: #b91c1c;
     }
 
     .hidden { display: none !important; }
@@ -1086,6 +1108,20 @@
     </div>
   </div>
 
+    <div class="dialog-backdrop" id="deleteConfirmBackdrop">
+    <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="deleteConfirmTitle">
+      <h2 class="dialog-title" id="deleteConfirmTitle">Удалить запись?</h2>
+      <p class="dialog-text">Запись будет удалена из списка платежей. Это действие нельзя отменить.</p>
+      <div class="dialog-actions">
+        <button class="btn" id="cancelDeleteBtn" type="button">Отмена</button>
+        <button class="btn btn-danger" id="confirmDeleteBtn" type="button">
+          <i class="ph ph-trash" style="font-size:18px;"></i>
+          Удалить
+        </button>
+      </div>
+    </div>
+  </div>
+
   <script>
     const STORAGE_KEY = 'my-rent-payments-html-pto-style-v1';
 
@@ -1139,6 +1175,7 @@
       isStatusDropdownOpen: false,
       isRepeatDropdownOpen: false,
       markPaidPaymentId: null,
+      deletingPaymentId: null,
     };
 
     const els = {
@@ -1210,6 +1247,9 @@
       markPaidNote: document.getElementById('markPaidNote'),
       cancelMarkPaidBtn: document.getElementById('cancelMarkPaidBtn'),
       confirmMarkPaidBtn: document.getElementById('confirmMarkPaidBtn'),
+      deleteConfirmBackdrop: document.getElementById('deleteConfirmBackdrop'),
+      cancelDeleteBtn: document.getElementById('cancelDeleteBtn'),
+      confirmDeleteBtn: document.getElementById('confirmDeleteBtn'),
     };
 
     function generateId() {
@@ -1694,6 +1734,31 @@
       if (els.markPaidBackdrop) els.markPaidBackdrop.classList.remove('open');
     }
 
+    function openDeleteConfirmDialog(id) {
+      state.deletingPaymentId = id;
+      closeDialog();
+      closeMarkPaidDialog();
+      if (els.deleteConfirmBackdrop) {
+        els.deleteConfirmBackdrop.classList.add('open');
+        els.deleteConfirmBackdrop.style.display = 'flex';
+      }
+    }
+
+    function closeDeleteConfirmDialog() {
+      state.deletingPaymentId = null;
+      if (els.deleteConfirmBackdrop) {
+        els.deleteConfirmBackdrop.classList.remove('open');
+        els.deleteConfirmBackdrop.style.display = '';
+      }
+    }
+
+    function confirmDeletePayment() {
+      if (!state.deletingPaymentId) return;
+      state.payments = state.payments.filter((payment) => payment.id !== state.deletingPaymentId);
+      closeDeleteConfirmDialog();
+      render();
+    }
+
     function confirmMarkPaid() {
       const id = state.markPaidPaymentId;
       if (!id) return;
@@ -1805,8 +1870,7 @@
     }
 
     function deletePayment(id) {
-      state.payments = state.payments.filter((payment) => payment.id !== id);
-      render();
+      openDeleteConfirmDialog(id);
     }
 
     function exportJson() {
@@ -1901,6 +1965,8 @@
       if (els.savePaymentBtn) els.savePaymentBtn.addEventListener('click', addPayment);
       if (els.cancelMarkPaidBtn) els.cancelMarkPaidBtn.addEventListener('click', closeMarkPaidDialog);
       if (els.confirmMarkPaidBtn) els.confirmMarkPaidBtn.addEventListener('click', confirmMarkPaid);
+      if (els.cancelDeleteBtn) els.cancelDeleteBtn.addEventListener('click', closeDeleteConfirmDialog);
+      if (els.confirmDeleteBtn) els.confirmDeleteBtn.addEventListener('click', confirmDeletePayment);
 
       if (els.paymentDate) {
         els.paymentDate.addEventListener('input', syncDateDisplays);
@@ -2052,10 +2118,17 @@
         });
       }
 
+      if (els.deleteConfirmBackdrop) {
+        els.deleteConfirmBackdrop.addEventListener('click', (event) => {
+          if (event.target === els.deleteConfirmBackdrop) closeDeleteConfirmDialog();
+        });
+      }
+
       document.addEventListener('keydown', (event) => {
         if (event.key === 'Escape') {
           closeDialog();
           closeMarkPaidDialog();
+          closeDeleteConfirmDialog();
           if (els.menuDropdown) els.menuDropdown.classList.remove('open');
         }
       });
@@ -2127,7 +2200,15 @@
       console.assert(typeof closeAllDropdowns === 'function', 'closeAllDropdowns function missing');
       console.assert(typeof openMarkPaidDialog === 'function', 'openMarkPaidDialog missing');
       console.assert(typeof confirmMarkPaid === 'function', 'confirmMarkPaid missing');
+      console.assert(typeof openDeleteConfirmDialog === 'function', 'openDeleteConfirmDialog missing');
+      console.assert(typeof confirmDeletePayment === 'function', 'confirmDeletePayment missing');
       console.assert(els.markPaidBackdrop instanceof HTMLElement, 'markPaidBackdrop element missing');
+      console.assert(els.deleteConfirmBackdrop instanceof HTMLElement, 'deleteConfirmBackdrop element missing');
+      if (els.deleteConfirmBackdrop) {
+        els.deleteConfirmBackdrop.classList.add('open');
+        console.assert(getComputedStyle(els.deleteConfirmBackdrop).display === 'flex', 'Delete confirm backdrop should become visible');
+        els.deleteConfirmBackdrop.classList.remove('open');
+      }
       console.assert(els.markPaidDate instanceof HTMLElement, 'markPaidDate element missing');
       console.assert(!String(bindEvents).includes("paymentTypeDisplay.addEventListener('click'"), 'Display click handler for type should be removed');
       console.assert(!String(bindEvents).includes("paymentStatusDisplay.addEventListener('click'"), 'Display click handler for status should be removed');
