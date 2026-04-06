@@ -1,0 +1,2162 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adama Vetulaniego 5c</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script type="module" src="https://unpkg.com/@phosphor-icons/web"></script>
+  <style>
+    :root {
+      --bg: #f6f7f2;
+      --panel: #ffffff;
+      --panel-soft: #f8fafc;
+      --border: #e2e8f0;
+      --text: #0f172a;
+      --muted: #64748b;
+      --accent: #0f172a;
+      --accent-hover: #1e293b;
+      --green-soft: #ecfdf5;
+      --green-text: #047857;
+      --green-border: #a7f3d0;
+      --amber-soft: #fef3c7;
+      --amber-text: #92400e;
+      --amber-border: #fcd34d;
+      --blue-soft: #dbeafe;
+      --blue-text: #1d4ed8;
+      --blue-border: #93c5fd;
+      --violet-soft: #ede9fe;
+      --violet-text: #6d28d9;
+      --violet-border: #c4b5fd;
+      --orange-soft: #ffedd5;
+      --orange-text: #9a3412;
+      --orange-border: #fdba74;
+      --zinc-soft: #f4f4f5;
+      --zinc-text: #3f3f46;
+      --zinc-border: #d4d4d8;
+      --red-soft: #fef2f2;
+      --red-text: #dc2626;
+      --radius-2xl: 28px;
+      --shadow: 0 10px 28px rgba(15, 23, 42, 0.06);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    button, input, select, textarea { font: inherit; }
+
+    .app {
+      max-width: 1680px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-2xl);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .top-panel { padding: 20px 24px; }
+
+    .top-panel-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .brand {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      margin-bottom: 0;
+    }
+
+    .brand-icon,
+    .summary-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+      background: var(--panel-soft);
+      flex: 0 0 auto;
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-size: 26px;
+      line-height: 1.08;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .brand p {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .top-panel-content {
+      display: grid;
+      gap: 16px;
+    }
+
+    .month-switcher {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      height: 46px;
+      padding: 0 10px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: #fff;
+      flex: 0 0 auto;
+    }
+
+    .month-nav {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      flex: 0 0 auto;
+    }
+
+    .month-nav .btn,
+    .month-jump-btn,
+    .calendar-nav-btn,
+    .calendar-today-btn {
+      width: 32px;
+      height: 32px;
+      min-width: 32px;
+      min-height: 32px;
+      flex: 0 0 32px;
+      padding: 0;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      background: transparent;
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .month-nav .btn:hover,
+    .month-jump-btn:hover,
+    .calendar-nav-btn:hover,
+    .calendar-today-btn:hover {
+      background: var(--panel-soft);
+      color: var(--text);
+    }
+
+    .month-current {
+      min-width: 160px;
+      padding: 0 8px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 700;
+      color: #334155;
+      white-space: nowrap;
+      line-height: 46px;
+    }
+
+    .btn, .menu-btn, .field, .textarea {
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--text);
+      border-radius: 16px;
+      transition: .18s ease;
+    }
+
+    .btn, .menu-btn, .field {
+      height: 46px;
+      min-height: 46px;
+      padding: 0 14px;
+    }
+
+    .btn, .menu-btn { cursor: pointer; }
+
+    .btn:hover, .menu-btn:hover { background: #f8fafc; }
+
+    .btn-primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      border-color: var(--accent-hover);
+    }
+
+    .summary-list {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin: 0;
+    }
+
+    .summary-card {
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 14px;
+      background: #fff;
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 12px;
+      align-items: start;
+    }
+
+    .summary-icon {
+      align-self: start;
+      margin-top: 2px;
+    }
+
+    .summary-meta { min-width: 0; }
+
+    .summary-title {
+      margin: 0;
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .summary-value {
+      margin: 4px 0 0;
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+
+    .summary-note {
+      margin: 6px 0 0;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .summary-icon.total { background: var(--panel-soft); }
+    .summary-icon.paid { background: var(--green-soft); color: var(--green-text); border-color: var(--green-border); }
+    .summary-icon.planned { background: var(--amber-soft); color: var(--amber-text); border-color: var(--amber-border); }
+
+    .sidebar-actions,
+    .top-panel-toolbar,
+    .toolbar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .sidebar-actions,
+    .top-panel-toolbar { justify-content: flex-end; }
+    .toolbar { margin-left: auto; }
+
+    .main-header {
+      padding: 22px 24px 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .main-title {
+      margin: 0;
+      font-size: 26px;
+      line-height: 1.1;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .main-subtitle {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .top-menu-wrap { position: relative; }
+
+    .menu-btn {
+      width: 46px;
+      padding: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .menu {
+      position: absolute;
+      right: 0;
+      top: calc(100% + 8px);
+      width: 210px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.12);
+      padding: 8px;
+      display: none;
+      z-index: 30;
+    }
+
+    .menu.open { display: block; }
+
+    .menu-item {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: transparent;
+      border: 0;
+      color: var(--text);
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .menu-item:hover { background: #f8fafc; }
+
+    .content { padding: 0 24px 24px; }
+
+    .table-wrap {
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .table-head,
+    .row {
+      display: grid;
+      grid-template-columns: 170px minmax(220px, 1fr) 140px 130px 142px;
+      gap: 12px;
+      align-items: center;
+      padding: 14px 16px;
+    }
+
+    .table-head {
+      background: var(--panel-soft);
+      border-bottom: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .row + .row { border-top: 1px solid var(--border); }
+    .muted { color: var(--muted); }
+    .right { text-align: right; }
+    .semibold { font-weight: 700; }
+    .truncate { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      min-height: 30px;
+      padding: 0 10px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .status-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 34px;
+      padding: 0 12px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1;
+      text-decoration: none;
+      font-family: inherit;
+    }
+
+    .status-action.paid {
+      background: var(--green-soft);
+      color: var(--green-text);
+      border-color: var(--green-border);
+      cursor: default;
+    }
+
+    .status-action.planned {
+      background: var(--accent) !important;
+      color: #fff !important;
+      border-color: var(--accent) !important;
+      cursor: pointer;
+    }
+
+    .status-action.planned i {
+      color: #fff !important;
+    }
+
+    .status-action.planned:hover {
+      background: var(--accent-hover) !important;
+      border-color: var(--accent-hover) !important;
+      color: #fff !important;
+      filter: none;
+    }
+
+    .status-cell {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    .badge.rent { background: var(--blue-soft); color: var(--blue-text); border-color: var(--blue-border); }
+    .badge.utilities { background: var(--orange-soft); color: var(--orange-text); border-color: var(--orange-border); }
+    .badge.electricity { background: var(--amber-soft); color: var(--amber-text); border-color: var(--amber-border); }
+    .badge.parking { background: var(--blue-soft); color: var(--blue-text); border-color: var(--blue-border); }
+    .badge.internet { background: var(--violet-soft); color: var(--violet-text); border-color: var(--violet-border); }
+    .badge.other { background: var(--zinc-soft); color: var(--zinc-text); border-color: var(--zinc-border); }
+    .badge.paid { background: var(--green-soft); color: var(--green-text); border-color: var(--green-border); }
+    .badge.planned { background: #f1f5f9; color: #475569; border-color: #cbd5e1; }
+
+    .delete-cell {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .row-actions {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .receipt-btn,
+    .edit-btn,
+    .delete-btn {
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+      min-height: 40px;
+      flex: 0 0 40px;
+      padding: 0;
+      border-radius: 12px;
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      aspect-ratio: 1 / 1;
+      line-height: 1;
+    }
+
+    .receipt-btn:hover {
+      background: var(--violet-soft);
+      color: var(--violet-text);
+    }
+
+    .edit-btn:hover {
+      background: var(--blue-soft);
+      color: var(--blue-text);
+    }
+
+    .delete-btn:hover {
+      background: var(--red-soft);
+      color: var(--red-text);
+    }
+
+    .empty {
+      padding: 64px 16px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .dialog-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.4);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 50;
+    }
+
+    .dialog-backdrop.open { display: flex; }
+
+    .dialog {
+      width: min(640px, 100%);
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      box-shadow: 0 24px 64px rgba(15, 23, 42, 0.18);
+      padding: 24px;
+    }
+
+    .dialog-title {
+      margin: 0 0 18px;
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .field-wrap.full { grid-column: 1 / -1; }
+
+    .field-label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .field,
+    .textarea {
+      width: 100%;
+      background: var(--panel-soft);
+    }
+
+    .textarea {
+      min-height: 120px;
+      padding: 12px 14px;
+      resize: vertical;
+    }
+
+    .field[readonly] { cursor: pointer; }
+
+    .date-display-wrap,
+    .select-wrap { position: relative; }
+
+    .select-wrap .field {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      padding-left: 44px;
+      padding-right: 44px;
+    }
+
+    .select-icon,
+    .select-caret {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+
+    .select-icon { left: 14px; }
+    .select-caret { right: 14px; }
+
+    .native-picker-input {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .select-hitarea {
+      position: absolute;
+      inset: 0;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      border-radius: 16px;
+    }
+
+    .custom-dropdown,
+    .month-dropdown,
+    .calendar-popover {
+      position: absolute;
+      top: calc(100% + 10px);
+      left: 0;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      box-shadow: 0 20px 44px rgba(15, 23, 42, 0.16);
+      z-index: 60;
+      display: none;
+    }
+
+    .custom-dropdown.open,
+    .month-dropdown.open,
+    .calendar-popover.open { display: block; }
+
+    .custom-dropdown {
+      width: 100%;
+      padding: 8px;
+    }
+
+    .custom-option {
+      width: 100%;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border: 0;
+      border-radius: 14px;
+      background: transparent;
+      color: var(--text);
+      text-align: left;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .custom-option:hover,
+    .custom-option.selected { background: var(--panel-soft); }
+
+    .custom-option-icon {
+      width: 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      flex: 0 0 20px;
+    }
+
+    .custom-option-check {
+      margin-left: auto;
+      color: var(--text);
+      opacity: 0;
+    }
+
+    .custom-option.selected .custom-option-check { opacity: 1; }
+
+    .month-dropdown {
+      width: 100%;
+      min-width: 280px;
+      padding: 14px;
+    }
+
+    .month-dropdown-header,
+    .calendar-header,
+    .calendar-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .month-dropdown-header,
+    .calendar-header { margin-bottom: 12px; }
+
+    .month-dropdown-title,
+    .calendar-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+
+    .month-dropdown-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .month-option {
+      height: 40px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: #fff;
+      color: var(--text);
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .month-option:hover { background: var(--panel-soft); }
+    .month-option.selected {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    .calendar-popover {
+      width: 320px;
+      padding: 14px;
+    }
+
+    .calendar-nav { display: inline-flex; gap: 6px; }
+
+    .calendar-weekdays,
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 4px;
+    }
+
+    .calendar-weekdays { margin-bottom: 8px; }
+
+    .calendar-weekday {
+      text-align: center;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--muted);
+      padding: 6px 0;
+    }
+
+    .calendar-day {
+      height: 38px;
+      border: 0;
+      border-radius: 12px;
+      background: transparent;
+      color: var(--text);
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .calendar-day:hover { background: var(--panel-soft); }
+    .calendar-day.muted { color: #cbd5e1; }
+    .calendar-day.today {
+      box-shadow: inset 0 0 0 1px var(--blue-border);
+      color: var(--blue-text);
+      background: var(--blue-soft);
+    }
+
+    .calendar-day.selected {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: none;
+    }
+
+    .calendar-footer {
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px solid var(--border);
+    }
+
+    .calendar-footer-label {
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .dialog-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .hidden { display: none !important; }
+
+    @media (max-width: 1120px) {
+      .summary-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 980px) {
+      .table-head { display: none; }
+      .row {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+      .row > div { text-align: left !important; }
+      .delete-cell { justify-content: flex-end; }
+    }
+
+    @media (max-width: 720px) {
+      .app { padding: 16px; }
+      .top-panel, .main-header, .content { padding-left: 16px; padding-right: 16px; }
+      .form-grid { grid-template-columns: 1fr; }
+      .summary-card { grid-template-columns: 44px 1fr; }
+      .summary-list { grid-template-columns: 1fr; }
+      .toolbar { width: 100%; margin-left: 0; }
+      .top-panel-header {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .top-panel-toolbar { justify-content: space-between; }
+      .month-current { min-width: 132px; }
+      .calendar-popover { width: min(320px, calc(100vw - 64px)); }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <div class="layout">
+      <section class="card top-panel">
+        <div class="top-panel-header">
+          <div class="brand">
+            <div class="brand-icon">
+              <i class="ph ph-wallet" style="font-size: 22px;"></i>
+            </div>
+            <div>
+              <h1>Adama Vetulaniego 5c</h1>
+              <p>Учёт расходов</p>
+            </div>
+          </div>
+
+          <div class="top-panel-toolbar">
+            <div class="month-switcher">
+              <div class="month-nav">
+                <button class="btn" id="prevMonthBtn" type="button" aria-label="Предыдущий месяц">
+                  <i class="ph ph-caret-left" style="font-size:16px;"></i>
+                </button>
+                <button class="btn" id="nextMonthBtn" type="button" aria-label="Следующий месяц">
+                  <i class="ph ph-caret-right" style="font-size:16px;"></i>
+                </button>
+              </div>
+              <div class="month-current" id="sidebarMonthLabel"></div>
+              <button class="month-jump-btn" id="currentMonthBtn" type="button" aria-label="Перейти к текущему месяцу">
+                <i class="ph ph-calendar-blank" style="font-size:16px;"></i>
+              </button>
+            </div>
+
+            <div class="sidebar-actions">
+              <button class="btn btn-primary" id="openDialogBtn" type="button">
+                <i class="ph ph-plus"></i>
+                Добавить оплату
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="top-panel-content">
+          <div class="summary-list">
+            <div class="summary-card">
+              <div class="summary-icon total"><i class="ph ph-currency-circle-dollar" style="font-size:22px;"></i></div>
+              <div class="summary-meta">
+                <p class="summary-title">Всего за месяц</p>
+                <p class="summary-value" id="summaryTotal">0 PLN</p>
+                <p class="summary-note">Сумма всех записей за выбранный месяц</p>
+              </div>
+            </div>
+
+            <div class="summary-card">
+              <div class="summary-icon paid"><i class="ph ph-check-circle" style="font-size:22px;"></i></div>
+              <div class="summary-meta">
+                <p class="summary-title">Оплачено</p>
+                <p class="summary-value" id="summaryPaid">0 PLN</p>
+                <p class="summary-note">То, что уже закрыто и не жужжит</p>
+              </div>
+            </div>
+
+            <div class="summary-card">
+              <div class="summary-icon planned"><i class="ph ph-clock-countdown" style="font-size:22px;"></i></div>
+              <div class="summary-meta">
+                <p class="summary-title">Запланировано</p>
+                <p class="summary-value" id="summaryPlanned">0 PLN</p>
+                <p class="summary-note">То, что ещё висит на горизонте</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <main class="card">
+        <div class="main-header">
+          <div>
+            <h2 class="main-title">Список платежей</h2>
+            <p class="main-subtitle">Отслеживай аренду, коммуналку, интернет и всё остальное, что стабильно высасывает деньги из кошелька.</p>
+          </div>
+
+          <div class="toolbar">
+            <div class="top-menu-wrap">
+              <button class="menu-btn" id="menuButton" type="button" aria-label="Меню">
+                <i class="ph ph-dots-three" style="font-size:20px;"></i>
+              </button>
+              <div class="menu" id="menuDropdown">
+                <button class="menu-item" id="exportBtn" type="button">
+                  <i class="ph ph-export" style="font-size:18px;"></i>
+                  Экспорт JSON
+                </button>
+                <button class="menu-item" id="importTriggerBtn" type="button">
+                  <i class="ph ph-file-arrow-up" style="font-size:18px;"></i>
+                  Импорт JSON
+                </button>
+                <input class="hidden" id="importInput" type="file" accept="application/json" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="content">
+          <div class="table-wrap">
+            <div class="table-head">
+              <div>Тип</div>
+              <div>Комментарий</div>
+              <div class="right">Сумма</div>
+              <div>Статус</div>
+              <div></div>
+            </div>
+            <div id="paymentsRows"></div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div class="dialog-backdrop" id="dialogBackdrop">
+    <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="dialogTitle">
+      <h2 class="dialog-title" id="dialogTitle">Новая запись оплаты</h2>
+      <div class="form-grid">
+        <div class="field-wrap full">
+          <label class="field-label" for="paymentTypeDisplay">Тип платежа</label>
+          <div class="select-wrap" id="paymentTypeWrap">
+            <span class="select-icon" id="paymentTypeIcon" aria-hidden="true"></span>
+            <input class="field" id="paymentTypeDisplay" type="text" readonly />
+            <button class="select-hitarea" id="paymentTypeToggle" type="button" aria-label="Выбрать тип платежа"></button>
+            <span class="select-caret" aria-hidden="true"><i class="ph ph-caret-down" style="font-size:18px;"></i></span>
+            <div class="custom-dropdown" id="paymentTypeDropdown"></div>
+            <select class="field hidden" id="paymentType">
+              <option value="rent">Аренда</option>
+              <option value="utilities">Коммунальные</option>
+              <option value="electricity">Электричество</option>
+              <option value="parking">Парковка</option>
+              <option value="internet">Интернет</option>
+              <option value="other">Другое</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field-wrap">
+          <label class="field-label" for="paymentStatusDisplay">Статус</label>
+          <div class="select-wrap" id="paymentStatusWrap">
+            <span class="select-icon" id="paymentStatusIcon" aria-hidden="true"></span>
+            <input class="field" id="paymentStatusDisplay" type="text" readonly />
+            <button class="select-hitarea" id="paymentStatusToggle" type="button" aria-label="Выбрать статус"></button>
+            <span class="select-caret" aria-hidden="true"><i class="ph ph-caret-down" style="font-size:18px;"></i></span>
+            <div class="custom-dropdown" id="paymentStatusDropdown"></div>
+            <select class="field hidden" id="paymentStatus">
+              <option value="paid">Оплачено</option>
+              <option value="planned">Запланировано</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field-wrap">
+          <label class="field-label" for="paymentAmount">Сумма</label>
+          <input class="field" id="paymentAmount" type="number" step="0.01" min="0" placeholder="0" />
+        </div>
+
+        <div class="field-wrap conditionally-paid-only" id="paymentDateFieldWrap">
+          <label class="field-label" for="paymentDateDisplay">Дата оплаты</label>
+          <div class="date-display-wrap" id="paymentDateWrap">
+            <input class="field" id="paymentDateDisplay" type="text" readonly />
+            <input class="native-picker-input" id="paymentDate" type="date" tabindex="-1" aria-hidden="true" />
+            <div class="calendar-popover" id="calendarPopover">
+              <div class="calendar-header">
+                <div class="calendar-title" id="calendarTitle"></div>
+                <div class="calendar-nav">
+                  <button class="calendar-today-btn" id="calendarTodayBtn" type="button" aria-label="Сегодня">
+                    <i class="ph ph-calendar-blank" style="font-size:16px;"></i>
+                  </button>
+                  <button class="calendar-nav-btn" id="calendarPrevBtn" type="button" aria-label="Предыдущий месяц">
+                    <i class="ph ph-caret-left" style="font-size:16px;"></i>
+                  </button>
+                  <button class="calendar-nav-btn" id="calendarNextBtn" type="button" aria-label="Следующий месяц">
+                    <i class="ph ph-caret-right" style="font-size:16px;"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="calendar-weekdays" id="calendarWeekdays"></div>
+              <div class="calendar-grid" id="calendarGrid"></div>
+              <div class="calendar-footer">
+                <span class="calendar-footer-label" id="calendarFooterLabel"></span>
+                <button class="btn" id="calendarCloseBtn" type="button">Готово</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="field-wrap">
+          <label class="field-label" for="paymentRepeatDisplay">Повторять</label>
+          <div class="select-wrap" id="paymentRepeatWrap">
+            <span class="select-icon" id="paymentRepeatIcon" aria-hidden="true"></span>
+            <input class="field" id="paymentRepeatDisplay" type="text" readonly />
+            <button class="select-hitarea" id="paymentRepeatToggle" type="button" aria-label="Выбрать повторение"></button>
+            <span class="select-caret" aria-hidden="true"><i class="ph ph-caret-down" style="font-size:18px;"></i></span>
+            <div class="custom-dropdown" id="paymentRepeatDropdown"></div>
+            <select class="field hidden" id="paymentRepeat">
+              <option value="none">Не повторять</option>
+              <option value="monthly_until_year_end">Каждый месяц</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field-wrap">
+          <label class="field-label" for="paymentMonthDisplay">За какой месяц</label>
+          <div class="select-wrap" id="paymentMonthWrap">
+            <span class="select-icon" aria-hidden="true"><i class="ph ph-calendar" style="font-size:18px;"></i></span>
+            <input class="field" id="paymentMonthDisplay" type="text" readonly />
+            <button class="select-hitarea" id="paymentMonthToggle" type="button" aria-label="Выбрать месяц"></button>
+            <span class="select-caret" aria-hidden="true"><i class="ph ph-caret-down" style="font-size:18px;"></i></span>
+            <div class="month-dropdown" id="monthDropdown">
+              <div class="month-dropdown-header">
+                <button class="calendar-nav-btn" id="monthDropdownPrevYear" type="button" aria-label="Предыдущий год">
+                  <i class="ph ph-caret-left" style="font-size:16px;"></i>
+                </button>
+                <div class="month-dropdown-title" id="monthDropdownTitle"></div>
+                <button class="calendar-nav-btn" id="monthDropdownNextYear" type="button" aria-label="Следующий год">
+                  <i class="ph ph-caret-right" style="font-size:16px;"></i>
+                </button>
+              </div>
+              <div class="month-dropdown-grid" id="monthDropdownGrid"></div>
+            </div>
+            <input class="native-picker-input" id="paymentMonth" type="month" tabindex="-1" aria-hidden="true" />
+          </div>
+        </div>
+
+        <div class="field-wrap full conditionally-paid-only" id="paymentReceiptFieldWrap">
+          <label class="field-label" for="paymentReceipt">Квитанция</label>
+          <input class="field" id="paymentReceipt" type="url" placeholder="Вставь ссылку на Google Drive" />
+        </div>
+
+        <div class="field-wrap full">
+          <label class="field-label" for="paymentNote">Комментарий</label>
+          <textarea class="textarea" id="paymentNote" placeholder="Например: доплата за воду, частичная оплата, перерасчёт, депозит и т.д."></textarea>
+        </div>
+      </div>
+      <div class="dialog-actions">
+        <button class="btn" id="cancelDialogBtn" type="button">Отмена</button>
+        <button class="btn btn-primary" id="savePaymentBtn" type="button">
+          <i class="ph ph-floppy-disk" style="font-size:18px;"></i>
+          Сохранить
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="dialog-backdrop" id="markPaidBackdrop">
+    <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="markPaidTitle">
+      <h2 class="dialog-title" id="markPaidTitle">Отметить как оплачено</h2>
+      <div class="form-grid">
+        <div class="field-wrap">
+          <label class="field-label" for="markPaidDate">Дата оплаты</label>
+          <input class="field" id="markPaidDate" type="date" />
+        </div>
+
+        <div class="field-wrap full">
+          <label class="field-label" for="markPaidReceipt">Квитанция</label>
+          <input class="field" id="markPaidReceipt" type="url" placeholder="Вставь ссылку на Google Drive" />
+        </div>
+
+        <div class="field-wrap full">
+          <label class="field-label" for="markPaidNote">Комментарий</label>
+          <textarea class="textarea" id="markPaidNote" placeholder="Можно обновить комментарий перед оплатой"></textarea>
+        </div>
+      </div>
+      <div class="dialog-actions">
+        <button class="btn" id="cancelMarkPaidBtn" type="button">Отмена</button>
+        <button class="btn btn-primary" id="confirmMarkPaidBtn" type="button">
+          <i class="ph ph-check" style="font-size:18px;"></i>
+          Оплатить
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const STORAGE_KEY = 'my-rent-payments-html-pto-style-v1';
+
+    const PAYMENT_TYPES = {
+      rent: 'Аренда',
+      utilities: 'Коммунальные',
+      electricity: 'Электричество',
+      parking: 'Парковка',
+      internet: 'Интернет',
+      other: 'Другое',
+    };
+
+    const PAYMENT_TYPE_ICONS = {
+      rent: 'house-line',
+      utilities: 'drop',
+      electricity: 'lightning',
+      parking: 'car-profile',
+      internet: 'wifi-high',
+      other: 'dots-three-circle',
+    };
+
+    const PAYMENT_STATUS_LABELS = {
+      paid: 'Оплачено',
+      planned: 'Запланировано',
+    };
+
+    const PAYMENT_STATUS_ICONS = {
+      paid: 'check-circle',
+      planned: 'clock-countdown',
+    };
+
+    const PAYMENT_REPEAT_LABELS = {
+      none: 'Не повторять',
+      monthly_until_year_end: 'Каждый месяц',
+    };
+
+    const PAYMENT_REPEAT_ICONS = {
+      none: 'minus-circle',
+      monthly_until_year_end: 'repeat',
+    };
+
+    const state = {
+      selectedMonth: getCurrentMonth(),
+      payments: [],
+      editingPaymentId: null,
+      calendarMonth: getCurrentMonth(),
+      isCalendarOpen: false,
+      monthDropdownYear: new Date().getFullYear(),
+      isMonthDropdownOpen: false,
+      isTypeDropdownOpen: false,
+      isStatusDropdownOpen: false,
+      isRepeatDropdownOpen: false,
+      markPaidPaymentId: null,
+    };
+
+    const els = {
+      sidebarMonthLabel: document.getElementById('sidebarMonthLabel'),
+      prevMonthBtn: document.getElementById('prevMonthBtn'),
+      nextMonthBtn: document.getElementById('nextMonthBtn'),
+      currentMonthBtn: document.getElementById('currentMonthBtn'),
+      summaryTotal: document.getElementById('summaryTotal'),
+      summaryPaid: document.getElementById('summaryPaid'),
+      summaryPlanned: document.getElementById('summaryPlanned'),
+      menuButton: document.getElementById('menuButton'),
+      menuDropdown: document.getElementById('menuDropdown'),
+      exportBtn: document.getElementById('exportBtn'),
+      importTriggerBtn: document.getElementById('importTriggerBtn'),
+      importInput: document.getElementById('importInput'),
+      openDialogBtn: document.getElementById('openDialogBtn'),
+      dialogBackdrop: document.getElementById('dialogBackdrop'),
+      cancelDialogBtn: document.getElementById('cancelDialogBtn'),
+      savePaymentBtn: document.getElementById('savePaymentBtn'),
+      dialogTitle: document.getElementById('dialogTitle'),
+      paymentsRows: document.getElementById('paymentsRows'),
+      paymentType: document.getElementById('paymentType'),
+      paymentTypeWrap: document.getElementById('paymentTypeWrap'),
+      paymentTypeDisplay: document.getElementById('paymentTypeDisplay'),
+      paymentTypeIcon: document.getElementById('paymentTypeIcon'),
+      paymentTypeToggle: document.getElementById('paymentTypeToggle'),
+      paymentTypeDropdown: document.getElementById('paymentTypeDropdown'),
+      paymentAmount: document.getElementById('paymentAmount'),
+      paymentDate: document.getElementById('paymentDate'),
+      paymentDateDisplay: document.getElementById('paymentDateDisplay'),
+      paymentDateWrap: document.getElementById('paymentDateWrap'),
+      calendarPopover: document.getElementById('calendarPopover'),
+      calendarTitle: document.getElementById('calendarTitle'),
+      calendarWeekdays: document.getElementById('calendarWeekdays'),
+      calendarGrid: document.getElementById('calendarGrid'),
+      calendarFooterLabel: document.getElementById('calendarFooterLabel'),
+      calendarTodayBtn: document.getElementById('calendarTodayBtn'),
+      calendarPrevBtn: document.getElementById('calendarPrevBtn'),
+      calendarNextBtn: document.getElementById('calendarNextBtn'),
+      calendarCloseBtn: document.getElementById('calendarCloseBtn'),
+      paymentMonth: document.getElementById('paymentMonth'),
+      paymentMonthDisplay: document.getElementById('paymentMonthDisplay'),
+      paymentMonthWrap: document.getElementById('paymentMonthWrap'),
+      paymentMonthToggle: document.getElementById('paymentMonthToggle'),
+      monthDropdown: document.getElementById('monthDropdown'),
+      monthDropdownTitle: document.getElementById('monthDropdownTitle'),
+      monthDropdownGrid: document.getElementById('monthDropdownGrid'),
+      monthDropdownPrevYear: document.getElementById('monthDropdownPrevYear'),
+      monthDropdownNextYear: document.getElementById('monthDropdownNextYear'),
+      paymentStatus: document.getElementById('paymentStatus'),
+      paymentStatusWrap: document.getElementById('paymentStatusWrap'),
+      paymentStatusDisplay: document.getElementById('paymentStatusDisplay'),
+      paymentStatusIcon: document.getElementById('paymentStatusIcon'),
+      paymentStatusToggle: document.getElementById('paymentStatusToggle'),
+      paymentStatusDropdown: document.getElementById('paymentStatusDropdown'),
+      paymentDateFieldWrap: document.getElementById('paymentDateFieldWrap'),
+      paymentReceiptFieldWrap: document.getElementById('paymentReceiptFieldWrap'),
+      paymentRepeat: document.getElementById('paymentRepeat'),
+      paymentRepeatWrap: document.getElementById('paymentRepeatWrap'),
+      paymentRepeatDisplay: document.getElementById('paymentRepeatDisplay'),
+      paymentRepeatIcon: document.getElementById('paymentRepeatIcon'),
+      paymentRepeatToggle: document.getElementById('paymentRepeatToggle'),
+      paymentRepeatDropdown: document.getElementById('paymentRepeatDropdown'),
+      paymentReceipt: document.getElementById('paymentReceipt'),
+      paymentNote: document.getElementById('paymentNote'),
+      markPaidBackdrop: document.getElementById('markPaidBackdrop'),
+      markPaidDate: document.getElementById('markPaidDate'),
+      markPaidReceipt: document.getElementById('markPaidReceipt'),
+      markPaidNote: document.getElementById('markPaidNote'),
+      cancelMarkPaidBtn: document.getElementById('cancelMarkPaidBtn'),
+      confirmMarkPaidBtn: document.getElementById('confirmMarkPaidBtn'),
+    };
+
+    function generateId() {
+      if (window.crypto && typeof window.crypto.randomUUID === 'function') return window.crypto.randomUUID();
+      return 'payment-' + Date.now() + '-' + Math.random().toString(36).slice(2, 9);
+    }
+
+    function getCurrentDate() {
+      const now = new Date();
+      const tzOffset = now.getTimezoneOffset() * 60000;
+      return new Date(now.getTime() - tzOffset).toISOString().slice(0, 10);
+    }
+
+    function getCurrentMonth() {
+      const now = new Date();
+      const tzOffset = now.getTimezoneOffset() * 60000;
+      return new Date(now.getTime() - tzOffset).toISOString().slice(0, 7);
+    }
+
+    function shiftMonth(monthValue, offset) {
+      const [year, month] = monthValue.split('-').map(Number);
+      const date = new Date(year, month - 1 + offset, 1);
+      return date.getFullYear() + '-' + String(date.getMonth() + 1).padStart(2, '0');
+    }
+
+    function monthLabel(monthValue) {
+      const [year, month] = monthValue.split('-').map(Number);
+      if (!year || !month) return monthValue;
+      const label = new Intl.DateTimeFormat('ru-RU', { month: 'long', year: 'numeric' }).format(new Date(year, month - 1, 1));
+      return label.charAt(0).toUpperCase() + label.slice(1);
+    }
+
+    function monthTitle(monthValue) {
+      return monthLabel(monthValue);
+    }
+
+    function formatMoney(value) {
+      return new Intl.NumberFormat('ru-RU', {
+        style: 'decimal',
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 2,
+      }).format(Number(value || 0)) + ' PLN';
+    }
+
+    function isToday(dateValue) {
+      return dateValue === getCurrentDate();
+    }
+
+    function humanDateLabel(dateValue) {
+      if (!dateValue) return '';
+      if (isToday(dateValue)) return 'Сегодня';
+
+      const [year, month, day] = dateValue.split('-').map(Number);
+      if (!year || !month || !day) return dateValue;
+
+      const formatted = new Intl.DateTimeFormat('ru-RU', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
+      }).format(new Date(year, month - 1, day));
+
+      return formatted.charAt(0).toUpperCase() + formatted.slice(1);
+    }
+
+    function getPhIconHtml(name, size = 18) {
+      return `<i class="ph ph-${name}" style="font-size:${size}px;"></i>`;
+    }
+
+    function syncCustomSelectDisplays() {
+      const typeValue = els.paymentType?.value || 'rent';
+      const statusValue = els.paymentStatus?.value || 'planned';
+      const repeatValue = els.paymentRepeat?.value || 'none';
+
+      if (els.paymentTypeDisplay) els.paymentTypeDisplay.value = PAYMENT_TYPES[typeValue] || PAYMENT_TYPES.rent;
+      if (els.paymentStatusDisplay) els.paymentStatusDisplay.value = PAYMENT_STATUS_LABELS[statusValue] || PAYMENT_STATUS_LABELS.planned;
+      if (els.paymentRepeatDisplay) els.paymentRepeatDisplay.value = PAYMENT_REPEAT_LABELS[repeatValue] || PAYMENT_REPEAT_LABELS.none;
+      if (els.paymentTypeIcon) els.paymentTypeIcon.innerHTML = getPhIconHtml(PAYMENT_TYPE_ICONS[typeValue] || PAYMENT_TYPE_ICONS.rent);
+      if (els.paymentStatusIcon) els.paymentStatusIcon.innerHTML = getPhIconHtml(PAYMENT_STATUS_ICONS[statusValue] || PAYMENT_STATUS_ICONS.planned);
+      if (els.paymentRepeatIcon) els.paymentRepeatIcon.innerHTML = getPhIconHtml(PAYMENT_REPEAT_ICONS[repeatValue] || PAYMENT_REPEAT_ICONS.none);
+      syncStatusDependentFields();
+    }
+
+    function syncStatusDependentFields() {
+      const isPaid = els.paymentStatus?.value === 'paid';
+      if (els.paymentDateFieldWrap) {
+        els.paymentDateFieldWrap.style.display = isPaid ? '' : 'none';
+      }
+      if (els.paymentReceiptFieldWrap) {
+        els.paymentReceiptFieldWrap.style.display = isPaid ? '' : 'none';
+      }
+      if (!isPaid) {
+        closeCalendar();
+      }
+    }
+
+    function renderRepeatDropdown() {
+      renderCustomDropdown(
+        els.paymentRepeatDropdown,
+        Object.entries(PAYMENT_REPEAT_LABELS).map(([value, label]) => ({ value, label, icon: PAYMENT_REPEAT_ICONS[value] })),
+        els.paymentRepeat?.value || 'none',
+        'data-repeat-value'
+      );
+    }
+
+    function openRepeatDropdown() {
+      state.isRepeatDropdownOpen = true;
+      if (els.paymentRepeatDropdown) els.paymentRepeatDropdown.classList.add('open');
+      renderRepeatDropdown();
+    }
+
+    function closeRepeatDropdown() {
+      state.isRepeatDropdownOpen = false;
+      if (els.paymentRepeatDropdown) els.paymentRepeatDropdown.classList.remove('open');
+    }
+
+    function selectRepeatValue(value) {
+      if (els.paymentRepeat) els.paymentRepeat.value = value;
+      syncCustomSelectDisplays();
+      closeRepeatDropdown();
+    }
+
+    function syncDateDisplays() {
+      if (els.paymentDateDisplay) {
+        els.paymentDateDisplay.value = humanDateLabel(els.paymentDate?.value || '');
+      }
+      if (els.paymentMonthDisplay) {
+        els.paymentMonthDisplay.value = monthLabel(els.paymentMonth?.value || '');
+      }
+      if (els.calendarFooterLabel) {
+        els.calendarFooterLabel.textContent = humanDateLabel(els.paymentDate?.value || '') || 'Выбери дату';
+      }
+      syncCustomSelectDisplays();
+    }
+
+    function formatDateISO(date) {
+      const y = date.getFullYear();
+      const m = String(date.getMonth() + 1).padStart(2, '0');
+      const d = String(date.getDate()).padStart(2, '0');
+      return `${y}-${m}-${d}`;
+    }
+
+    function getCalendarCells(monthValue) {
+      const [year, month] = monthValue.split('-').map(Number);
+      const firstDay = new Date(year, month - 1, 1);
+      const startWeekday = (firstDay.getDay() + 6) % 7;
+      const startDate = new Date(year, month - 1, 1 - startWeekday);
+      return Array.from({ length: 42 }, (_, index) => {
+        const cellDate = new Date(startDate);
+        cellDate.setDate(startDate.getDate() + index);
+        return {
+          iso: formatDateISO(cellDate),
+          day: cellDate.getDate(),
+          inCurrentMonth: cellDate.getMonth() === month - 1,
+        };
+      });
+    }
+
+    function renderCustomDropdown(dropdownEl, items, selectedValue, dataAttr) {
+      if (!dropdownEl) return;
+      dropdownEl.innerHTML = items.map((item) => {
+        const selectedClass = item.value === selectedValue ? ' selected' : '';
+        return `
+          <button class="custom-option${selectedClass}" type="button" ${dataAttr}="${item.value}">
+            <span class="custom-option-icon">${getPhIconHtml(item.icon)}</span>
+            <span>${item.label}</span>
+            <span class="custom-option-check">${getPhIconHtml('check')}</span>
+          </button>
+        `;
+      }).join('');
+    }
+
+    function renderTypeDropdown() {
+      renderCustomDropdown(
+        els.paymentTypeDropdown,
+        Object.entries(PAYMENT_TYPES).map(([value, label]) => ({ value, label, icon: PAYMENT_TYPE_ICONS[value] })),
+        els.paymentType?.value || 'rent',
+        'data-type-value'
+      );
+    }
+
+    function renderStatusDropdown() {
+      renderCustomDropdown(
+        els.paymentStatusDropdown,
+        Object.entries(PAYMENT_STATUS_LABELS).map(([value, label]) => ({ value, label, icon: PAYMENT_STATUS_ICONS[value] })),
+        els.paymentStatus?.value || 'paid',
+        'data-status-value'
+      );
+    }
+
+    function openTypeDropdown() {
+      state.isTypeDropdownOpen = true;
+      if (els.paymentTypeDropdown) els.paymentTypeDropdown.classList.add('open');
+      renderTypeDropdown();
+    }
+
+    function closeTypeDropdown() {
+      state.isTypeDropdownOpen = false;
+      if (els.paymentTypeDropdown) els.paymentTypeDropdown.classList.remove('open');
+    }
+
+    function openStatusDropdown() {
+      state.isStatusDropdownOpen = true;
+      if (els.paymentStatusDropdown) els.paymentStatusDropdown.classList.add('open');
+      renderStatusDropdown();
+    }
+
+    function closeStatusDropdown() {
+      state.isStatusDropdownOpen = false;
+      if (els.paymentStatusDropdown) els.paymentStatusDropdown.classList.remove('open');
+    }
+
+    function selectTypeValue(value) {
+      if (els.paymentType) els.paymentType.value = value;
+      syncCustomSelectDisplays();
+      closeTypeDropdown();
+    }
+
+    function selectStatusValue(value) {
+      if (els.paymentStatus) els.paymentStatus.value = value;
+      if (value !== 'paid' && els.paymentReceipt) {
+        els.paymentReceipt.value = '';
+      }
+      syncCustomSelectDisplays();
+      closeStatusDropdown();
+    }
+
+    function renderCalendar() {
+      if (!els.calendarTitle || !els.calendarGrid || !els.calendarWeekdays) return;
+
+      const weekdays = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
+      els.calendarWeekdays.innerHTML = weekdays.map((day) => `<div class="calendar-weekday">${day}</div>`).join('');
+      els.calendarTitle.textContent = monthTitle(state.calendarMonth);
+
+      const selectedDate = els.paymentDate?.value || getCurrentDate();
+      const today = getCurrentDate();
+      const cells = getCalendarCells(state.calendarMonth);
+
+      els.calendarGrid.innerHTML = cells.map((cell) => {
+        const classes = ['calendar-day'];
+        if (!cell.inCurrentMonth) classes.push('muted');
+        if (cell.iso === today) classes.push('today');
+        if (cell.iso === selectedDate) classes.push('selected');
+        return `<button class="${classes.join(' ')}" type="button" data-calendar-date="${cell.iso}">${cell.day}</button>`;
+      }).join('');
+
+      syncDateDisplays();
+    }
+
+    function openCalendar() {
+      state.isCalendarOpen = true;
+      state.calendarMonth = (els.paymentDate?.value || getCurrentMonth()).slice(0, 7);
+      if (els.calendarPopover) els.calendarPopover.classList.add('open');
+      renderCalendar();
+    }
+
+    function closeCalendar() {
+      state.isCalendarOpen = false;
+      if (els.calendarPopover) els.calendarPopover.classList.remove('open');
+    }
+
+    function selectCalendarDate(dateValue) {
+      if (els.paymentDate) els.paymentDate.value = dateValue;
+      syncDateDisplays();
+      closeCalendar();
+    }
+
+    function openMonthDropdown() {
+      state.isMonthDropdownOpen = true;
+      state.monthDropdownYear = Number((els.paymentMonth?.value || getCurrentMonth()).slice(0, 4));
+      if (els.monthDropdown) els.monthDropdown.classList.add('open');
+      renderMonthDropdown();
+    }
+
+    function closeMonthDropdown() {
+      state.isMonthDropdownOpen = false;
+      if (els.monthDropdown) els.monthDropdown.classList.remove('open');
+    }
+
+    function renderMonthDropdown() {
+      if (!els.monthDropdownTitle || !els.monthDropdownGrid) return;
+      const months = ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек'];
+      const selected = els.paymentMonth?.value || getCurrentMonth();
+      els.monthDropdownTitle.textContent = String(state.monthDropdownYear);
+      els.monthDropdownGrid.innerHTML = months.map((label, index) => {
+        const value = `${state.monthDropdownYear}-${String(index + 1).padStart(2, '0')}`;
+        const selectedClass = value === selected ? ' selected' : '';
+        return `<button class="month-option${selectedClass}" type="button" data-month-value="${value}">${label}</button>`;
+      }).join('');
+    }
+
+    function selectMonthValue(monthValue) {
+      if (els.paymentMonth) els.paymentMonth.value = monthValue;
+      syncDateDisplays();
+      closeMonthDropdown();
+    }
+
+    function sortPaymentsDesc(payments) {
+      return [...payments].sort((a, b) => {
+        const byDate = new Date(b.date).getTime() - new Date(a.date).getTime();
+        if (byDate !== 0) return byDate;
+        return String(b.month).localeCompare(String(a.month));
+      });
+    }
+
+    function getDefaultPayments() {
+      const currentDate = getCurrentDate();
+      const currentMonth = getCurrentMonth();
+      return [
+        { id: generateId(), type: 'rent', amount: 3650, date: currentDate, month: currentMonth, note: 'Аренда за месяц', paid: true },
+        { id: generateId(), type: 'utilities', amount: 536, date: currentDate, month: currentMonth, note: 'Czynsz / коммунальные', paid: true },
+        { id: generateId(), type: 'internet', amount: 80, date: currentDate, month: currentMonth, note: 'Домашний интернет', paid: false },
+      ];
+    }
+
+    function sanitizePayments(payments) {
+      if (!Array.isArray(payments)) return getDefaultPayments();
+      return sortPaymentsDesc(payments.map((payment) => ({
+        id: typeof payment.id === 'string' && payment.id ? payment.id : generateId(),
+        type: PAYMENT_TYPES[payment.type] ? payment.type : 'other',
+        amount: Number(payment.amount || 0),
+        date: typeof payment.date === 'string' && payment.date ? payment.date : getCurrentDate(),
+        month: typeof payment.month === 'string' && payment.month ? payment.month : getCurrentMonth(),
+        note: typeof payment.note === 'string' ? payment.note : '',
+        receipt: typeof payment.receipt === 'string' ? payment.receipt : '',
+        repeat: payment.repeat === 'monthly_until_year_end' ? 'monthly_until_year_end' : 'none',
+        paid: Boolean(payment.paid),
+      })));
+    }
+
+    function loadState() {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) {
+        state.payments = getDefaultPayments();
+        return;
+      }
+      try {
+        const parsed = JSON.parse(raw);
+        state.payments = sanitizePayments(parsed.payments);
+      } catch (error) {
+        console.error('Failed to restore data', error);
+        state.payments = getDefaultPayments();
+      }
+    }
+
+    function saveState() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({ payments: state.payments }));
+    }
+
+    function getVisiblePayments() {
+      return sortPaymentsDesc(state.payments.filter((payment) => payment.month === state.selectedMonth));
+    }
+
+    function getSummary(payments) {
+      const total = payments.reduce((sum, payment) => sum + Number(payment.amount || 0), 0);
+      const paid = payments.filter((payment) => payment.paid).reduce((sum, payment) => sum + Number(payment.amount || 0), 0);
+      const planned = payments.filter((payment) => !payment.paid).reduce((sum, payment) => sum + Number(payment.amount || 0), 0);
+      return { total, paid, planned };
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    function renderSummary(payments) {
+      const summary = getSummary(payments);
+      if (els.sidebarMonthLabel) els.sidebarMonthLabel.textContent = monthLabel(state.selectedMonth);
+      if (els.summaryTotal) els.summaryTotal.textContent = formatMoney(summary.total);
+      if (els.summaryPaid) els.summaryPaid.textContent = formatMoney(summary.paid);
+      if (els.summaryPlanned) els.summaryPlanned.textContent = formatMoney(summary.planned);
+    }
+
+    function getStatusLabel(payment) {
+      return payment.paid ? PAYMENT_STATUS_LABELS.paid : PAYMENT_STATUS_LABELS.planned;
+    }
+
+    function renderRows(payments) {
+      if (!els.paymentsRows) return;
+
+      if (!payments.length) {
+        els.paymentsRows.innerHTML = '<div class="empty">За этот месяц пока пусто. Добавь оплату и поехали.</div>';
+        return;
+      }
+
+      els.paymentsRows.innerHTML = payments.map((payment) => {
+        const typeLabel = PAYMENT_TYPES[payment.type] || PAYMENT_TYPES.other;
+        const statusClass = payment.paid ? 'paid' : 'planned';
+        const statusIcon = payment.paid ? 'check' : 'credit-card';
+        const statusLabel = payment.paid ? 'Оплачено' : 'Оплатить';
+        const typeIcon = PAYMENT_TYPE_ICONS[payment.type] || PAYMENT_TYPE_ICONS.other;
+        const hasReceipt = Boolean(payment.receipt);
+
+        return `
+          <div class="row">
+            <div><span class="badge ${escapeHtml(payment.type)}">${getPhIconHtml(typeIcon, 14)} ${escapeHtml(typeLabel)}</span></div>
+            <div class="truncate">${escapeHtml(payment.note || '—')}</div>
+            <div class="right semibold">${escapeHtml(formatMoney(payment.amount))}</div>
+            <div class="status-cell">${payment.paid
+              ? `<span class="status-action paid" aria-label="${escapeHtml(statusLabel)}" title="${escapeHtml(statusLabel)}">${getPhIconHtml(statusIcon, 16)}<span>Оплачено</span></span>`
+              : `<button class="status-action planned" type="button" data-mark-paid-id="${escapeHtml(payment.id)}" aria-label="Оплатить" title="Оплатить">${getPhIconHtml(statusIcon, 16)}<span>Оплатить</span></button>`}</div>
+            <div class="delete-cell">
+              <div class="row-actions">
+                ${hasReceipt ? `<a class="receipt-btn" href="${escapeHtml(payment.receipt)}" target="_blank" rel="noopener noreferrer" aria-label="Открыть квитанцию" title="Открыть квитанцию">${getPhIconHtml('file-arrow-up', 18)}</a>` : ''}
+                <button class="edit-btn" type="button" data-edit-id="${escapeHtml(payment.id)}" aria-label="Редактировать">
+                  <i class="ph ph-pencil-simple" style="font-size:18px;"></i>
+                </button>
+                <button class="delete-btn" type="button" data-delete-id="${escapeHtml(payment.id)}" aria-label="Удалить">
+                  <i class="ph ph-trash" style="font-size:18px;"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function render() {
+      const payments = getVisiblePayments();
+      renderSummary(payments);
+      renderRows(payments);
+      saveState();
+    }
+
+    function resetForm() {
+      state.editingPaymentId = null;
+      if (els.dialogTitle) els.dialogTitle.textContent = 'Новая запись оплаты';
+      if (els.savePaymentBtn) {
+        els.savePaymentBtn.innerHTML = '<i class="ph ph-floppy-disk" style="font-size:18px;"></i>Сохранить';
+      }
+      if (els.paymentType) els.paymentType.value = 'rent';
+      if (els.paymentAmount) els.paymentAmount.value = '';
+      if (els.paymentDate) els.paymentDate.value = getCurrentDate();
+      if (els.paymentMonth) els.paymentMonth.value = state.selectedMonth;
+      if (els.paymentStatus) els.paymentStatus.value = 'planned';
+      if (els.paymentRepeat) els.paymentRepeat.value = 'none';
+      if (els.paymentReceipt) els.paymentReceipt.value = '';
+      if (els.paymentNote) els.paymentNote.value = '';
+      syncDateDisplays();
+    }
+
+    function fillForm(payment) {
+      state.editingPaymentId = payment.id;
+      if (els.dialogTitle) els.dialogTitle.textContent = 'Редактировать запись';
+      if (els.savePaymentBtn) {
+        els.savePaymentBtn.innerHTML = '<i class="ph ph-check" style="font-size:18px;"></i>Сохранить изменения';
+      }
+      if (els.paymentType) els.paymentType.value = payment.type;
+      if (els.paymentAmount) els.paymentAmount.value = payment.amount;
+      if (els.paymentDate) els.paymentDate.value = payment.date;
+      if (els.paymentMonth) els.paymentMonth.value = payment.month;
+      if (els.paymentStatus) els.paymentStatus.value = payment.paid ? 'paid' : 'planned';
+      if (els.paymentRepeat) els.paymentRepeat.value = payment.repeat || 'none';
+      if (els.paymentReceipt) els.paymentReceipt.value = payment.receipt || '';
+      if (els.paymentNote) els.paymentNote.value = payment.note || '';
+      syncDateDisplays();
+    }
+
+    function closeAllDropdowns() {
+      closeCalendar();
+      closeMonthDropdown();
+      closeTypeDropdown();
+      closeStatusDropdown();
+      closeRepeatDropdown();
+    }
+
+    function openMarkPaidDialog(id) {
+      const payment = state.payments.find((item) => item.id === id);
+      if (!payment || payment.paid) return;
+      state.markPaidPaymentId = id;
+      if (els.markPaidDate) els.markPaidDate.value = getCurrentDate();
+      if (els.markPaidReceipt) els.markPaidReceipt.value = payment.receipt || '';
+      if (els.markPaidNote) els.markPaidNote.value = payment.note || '';
+      if (els.markPaidBackdrop) els.markPaidBackdrop.classList.add('open');
+    }
+
+    function closeMarkPaidDialog() {
+      state.markPaidPaymentId = null;
+      if (els.markPaidBackdrop) els.markPaidBackdrop.classList.remove('open');
+    }
+
+    function confirmMarkPaid() {
+      const id = state.markPaidPaymentId;
+      if (!id) return;
+
+      const date = els.markPaidDate?.value || getCurrentDate();
+      const receipt = (els.markPaidReceipt?.value || '').trim();
+      const note = (els.markPaidNote?.value || '').trim();
+
+      if (receipt && !/^https?:\/\//i.test(receipt)) {
+        alert('Ссылка на квитанцию должна начинаться с http:// или https://');
+        return;
+      }
+
+      state.payments = sortPaymentsDesc(state.payments.map((payment) => (
+        payment.id === id
+          ? { ...payment, paid: true, date, receipt, note }
+          : payment
+      )));
+
+      closeMarkPaidDialog();
+      render();
+    }
+
+    function openDialog() {
+      resetForm();
+      closeAllDropdowns();
+      if (els.dialogBackdrop) els.dialogBackdrop.classList.add('open');
+    }
+
+    function openEditDialog(id) {
+      const payment = state.payments.find((item) => item.id === id);
+      if (!payment) return;
+      fillForm(payment);
+      closeAllDropdowns();
+      if (els.dialogBackdrop) els.dialogBackdrop.classList.add('open');
+    }
+
+    function closeDialog() {
+      closeAllDropdowns();
+      if (els.dialogBackdrop) els.dialogBackdrop.classList.remove('open');
+    }
+
+    function addPayment() {
+      const amount = Number(els.paymentAmount?.value);
+      const date = els.paymentDate?.value;
+      const month = els.paymentMonth?.value;
+      const type = els.paymentType?.value;
+      const paid = els.paymentStatus?.value === 'paid';
+      const repeat = els.paymentRepeat?.value || 'none';
+      const note = (els.paymentNote?.value || '').trim();
+      const receipt = (els.paymentReceipt?.value || '').trim();
+
+      if (!Number.isFinite(amount) || amount <= 0 || !month) {
+        alert('Заполни сумму и месяц. Желательно без творческого хаоса.');
+        return;
+      }
+
+      if (paid && !date) {
+        alert('Для оплаченной записи укажи дату оплаты.');
+        return;
+      }
+
+      if (!PAYMENT_TYPES[type]) {
+        alert('Некорректный тип платежа.');
+        return;
+      }
+
+      if (receipt && !/^https?:\/\//i.test(receipt)) {
+        alert('Ссылка на квитанцию должна начинаться с http:// или https://');
+        return;
+      }
+
+      const effectiveDate = paid ? date : getCurrentDate();
+      const effectiveReceipt = paid ? receipt : '';
+
+      const payload = { type, amount, date: effectiveDate, month, note, receipt: effectiveReceipt, repeat, paid };
+
+      if (state.editingPaymentId) {
+        state.payments = sortPaymentsDesc(state.payments.map((payment) => (
+          payment.id === state.editingPaymentId ? { ...payment, ...payload } : payment
+        )));
+      } else {
+        let newPayments = [{ id: generateId(), ...payload }];
+
+        if (repeat === 'monthly_until_year_end') {
+          const [year, startMonth] = month.split('-').map(Number);
+          for (let m = startMonth + 1; m <= 12; m += 1) {
+            const targetMonth = `${year}-${String(m).padStart(2, '0')}`;
+            const exists = state.payments.some((payment) => (
+              payment.month === targetMonth &&
+              payment.type === type &&
+              Number(payment.amount) === amount &&
+              String(payment.note || '') === note &&
+              String(payment.receipt || '') === receipt &&
+              Boolean(payment.paid) === paid
+            ));
+            if (!exists) {
+              newPayments.push({ id: generateId(), ...payload, month: targetMonth });
+            }
+          }
+        }
+
+        state.payments = sortPaymentsDesc([...newPayments, ...state.payments]);
+      }
+
+      state.selectedMonth = month;
+      closeDialog();
+      render();
+    }
+
+    function deletePayment(id) {
+      state.payments = state.payments.filter((payment) => payment.id !== id);
+      render();
+    }
+
+    function exportJson() {
+      const blob = new Blob([JSON.stringify({ payments: state.payments }, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'my-rent-payments.json';
+      link.click();
+      URL.revokeObjectURL(url);
+      if (els.menuDropdown) els.menuDropdown.classList.remove('open');
+    }
+
+    function importJson(file) {
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        try {
+          const parsed = JSON.parse(String(reader.result));
+          state.payments = sanitizePayments(parsed.payments);
+          render();
+        } catch (error) {
+          console.error(error);
+          alert('Не удалось импортировать JSON. Проверь файл.');
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    function bindEvents() {
+      if (els.prevMonthBtn) {
+        els.prevMonthBtn.addEventListener('click', () => {
+          state.selectedMonth = shiftMonth(state.selectedMonth, -1);
+          render();
+        });
+      }
+
+      if (els.nextMonthBtn) {
+        els.nextMonthBtn.addEventListener('click', () => {
+          state.selectedMonth = shiftMonth(state.selectedMonth, 1);
+          render();
+        });
+      }
+
+      if (els.currentMonthBtn) {
+        els.currentMonthBtn.addEventListener('click', () => {
+          state.selectedMonth = getCurrentMonth();
+          render();
+        });
+      }
+
+      if (els.menuButton && els.menuDropdown) {
+        els.menuButton.addEventListener('click', (event) => {
+          event.stopPropagation();
+          els.menuDropdown.classList.toggle('open');
+        });
+      }
+
+      document.addEventListener('click', (event) => {
+        if (!event.target.closest('.top-menu-wrap') && els.menuDropdown) {
+          els.menuDropdown.classList.remove('open');
+        }
+        if (state.isCalendarOpen && !event.target.closest('#paymentDateWrap')) {
+          closeCalendar();
+        }
+        if (state.isMonthDropdownOpen && !event.target.closest('#paymentMonthWrap')) {
+          closeMonthDropdown();
+        }
+        if (state.isTypeDropdownOpen && !event.target.closest('#paymentTypeWrap')) {
+          closeTypeDropdown();
+        }
+        if (state.isStatusDropdownOpen && !event.target.closest('#paymentStatusWrap')) {
+          closeStatusDropdown();
+        }
+        if (state.isRepeatDropdownOpen && !event.target.closest('#paymentRepeatWrap')) {
+          closeRepeatDropdown();
+        }
+      });
+
+      if (els.exportBtn) els.exportBtn.addEventListener('click', exportJson);
+      if (els.importTriggerBtn && els.importInput) {
+        els.importTriggerBtn.addEventListener('click', () => els.importInput.click());
+        els.importInput.addEventListener('change', (event) => {
+          importJson(event.target.files && event.target.files[0]);
+          event.target.value = '';
+          if (els.menuDropdown) els.menuDropdown.classList.remove('open');
+        });
+      }
+
+      if (els.openDialogBtn) els.openDialogBtn.addEventListener('click', openDialog);
+      if (els.cancelDialogBtn) els.cancelDialogBtn.addEventListener('click', closeDialog);
+      if (els.savePaymentBtn) els.savePaymentBtn.addEventListener('click', addPayment);
+      if (els.cancelMarkPaidBtn) els.cancelMarkPaidBtn.addEventListener('click', closeMarkPaidDialog);
+      if (els.confirmMarkPaidBtn) els.confirmMarkPaidBtn.addEventListener('click', confirmMarkPaid);
+
+      if (els.paymentDate) {
+        els.paymentDate.addEventListener('input', syncDateDisplays);
+        els.paymentDate.addEventListener('change', syncDateDisplays);
+      }
+
+      if (els.paymentMonth) {
+        els.paymentMonth.addEventListener('input', syncDateDisplays);
+        els.paymentMonth.addEventListener('change', syncDateDisplays);
+      }
+
+      if (els.paymentDateDisplay) {
+        els.paymentDateDisplay.addEventListener('click', openCalendar);
+      }
+
+      if (els.calendarTodayBtn) {
+        els.calendarTodayBtn.addEventListener('click', () => {
+          const today = getCurrentDate();
+          state.calendarMonth = today.slice(0, 7);
+          selectCalendarDate(today);
+        });
+      }
+
+      if (els.calendarPrevBtn) {
+        els.calendarPrevBtn.addEventListener('click', () => {
+          state.calendarMonth = shiftMonth(state.calendarMonth, -1);
+          renderCalendar();
+        });
+      }
+
+      if (els.calendarNextBtn) {
+        els.calendarNextBtn.addEventListener('click', () => {
+          state.calendarMonth = shiftMonth(state.calendarMonth, 1);
+          renderCalendar();
+        });
+      }
+
+      if (els.calendarCloseBtn) {
+        els.calendarCloseBtn.addEventListener('click', closeCalendar);
+      }
+
+      if (els.calendarGrid) {
+        els.calendarGrid.addEventListener('click', (event) => {
+          const dayBtn = event.target.closest('[data-calendar-date]');
+          if (!dayBtn) return;
+          selectCalendarDate(dayBtn.getAttribute('data-calendar-date'));
+        });
+      }
+
+      if (els.paymentMonthToggle) {
+        els.paymentMonthToggle.addEventListener('click', () => {
+          closeTypeDropdown();
+          closeStatusDropdown();
+          if (state.isMonthDropdownOpen) closeMonthDropdown();
+          else openMonthDropdown();
+        });
+      }
+
+      
+
+      if (els.monthDropdownPrevYear) {
+        els.monthDropdownPrevYear.addEventListener('click', () => {
+          state.monthDropdownYear -= 1;
+          renderMonthDropdown();
+        });
+      }
+
+      if (els.monthDropdownNextYear) {
+        els.monthDropdownNextYear.addEventListener('click', () => {
+          state.monthDropdownYear += 1;
+          renderMonthDropdown();
+        });
+      }
+
+      if (els.monthDropdownGrid) {
+        els.monthDropdownGrid.addEventListener('click', (event) => {
+          const btn = event.target.closest('[data-month-value]');
+          if (!btn) return;
+          selectMonthValue(btn.getAttribute('data-month-value'));
+        });
+      }
+
+      if (els.paymentTypeToggle) {
+        els.paymentTypeToggle.addEventListener('click', () => {
+          closeMonthDropdown();
+          closeStatusDropdown();
+          if (state.isTypeDropdownOpen) closeTypeDropdown();
+          else openTypeDropdown();
+        });
+      }
+
+      
+
+      if (els.paymentTypeDropdown) {
+        els.paymentTypeDropdown.addEventListener('click', (event) => {
+          const btn = event.target.closest('[data-type-value]');
+          if (!btn) return;
+          selectTypeValue(btn.getAttribute('data-type-value'));
+        });
+      }
+
+      if (els.paymentStatusToggle) {
+        els.paymentStatusToggle.addEventListener('click', () => {
+          closeMonthDropdown();
+          closeTypeDropdown();
+          closeRepeatDropdown();
+          if (state.isStatusDropdownOpen) closeStatusDropdown();
+          else openStatusDropdown();
+        });
+      }
+
+      if (els.paymentRepeatToggle) {
+        els.paymentRepeatToggle.addEventListener('click', () => {
+          closeMonthDropdown();
+          closeTypeDropdown();
+          closeStatusDropdown();
+          if (state.isRepeatDropdownOpen) closeRepeatDropdown();
+          else openRepeatDropdown();
+        });
+      }
+
+      
+
+      if (els.paymentStatusDropdown) {
+        els.paymentStatusDropdown.addEventListener('click', (event) => {
+          const btn = event.target.closest('[data-status-value]');
+          if (!btn) return;
+          selectStatusValue(btn.getAttribute('data-status-value'));
+        });
+      }
+
+      if (els.paymentRepeatDropdown) {
+        els.paymentRepeatDropdown.addEventListener('click', (event) => {
+          const btn = event.target.closest('[data-repeat-value]');
+          if (!btn) return;
+          selectRepeatValue(btn.getAttribute('data-repeat-value'));
+        });
+      }
+
+      if (els.dialogBackdrop) {
+        els.dialogBackdrop.addEventListener('click', (event) => {
+          if (event.target === els.dialogBackdrop) closeDialog();
+        });
+      }
+
+      if (els.markPaidBackdrop) {
+        els.markPaidBackdrop.addEventListener('click', (event) => {
+          if (event.target === els.markPaidBackdrop) closeMarkPaidDialog();
+        });
+      }
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          closeDialog();
+          closeMarkPaidDialog();
+          if (els.menuDropdown) els.menuDropdown.classList.remove('open');
+        }
+      });
+
+      if (els.paymentsRows) {
+        els.paymentsRows.addEventListener('click', (event) => {
+          const markPaidBtn = event.target.closest('[data-mark-paid-id]');
+          if (markPaidBtn) {
+            openMarkPaidDialog(markPaidBtn.getAttribute('data-mark-paid-id'));
+            return;
+          }
+
+          const editBtn = event.target.closest('[data-edit-id]');
+          if (editBtn) {
+            openEditDialog(editBtn.getAttribute('data-edit-id'));
+            return;
+          }
+
+          const deleteBtn = event.target.closest('[data-delete-id]');
+          if (!deleteBtn) return;
+          deletePayment(deleteBtn.getAttribute('data-delete-id'));
+        });
+      }
+    }
+
+    function runSanityChecks() {
+      console.assert(shiftMonth('2026-04', -1) === '2026-03', 'Previous month failed');
+      console.assert(shiftMonth('2026-01', -1) === '2025-12', 'Backward year switch failed');
+      console.assert(shiftMonth('2026-12', 1) === '2027-01', 'Forward year switch failed');
+      console.assert(monthLabel('2026-04').includes('2026'), 'Month label failed');
+      console.assert(formatMoney(100).includes('PLN'), 'Money formatter failed');
+      console.assert(Array.isArray(sanitizePayments([])), 'Sanitize payments failed');
+      console.assert(getDefaultPayments().length >= 2, 'Default payments failed');
+      console.assert(sanitizePayments([{ type: 'rent', amount: '12' }])[0].amount === 12, 'Amount coercion failed');
+      console.assert(getVisiblePayments instanceof Function, 'Visible payments function missing');
+      console.assert(getSummary([{ amount: 10, paid: true }, { amount: 5, paid: false }]).total === 15, 'Summary total failed');
+      console.assert(getSummary([{ amount: 10, paid: true }, { amount: 5, paid: false }]).paid === 10, 'Summary paid failed');
+      console.assert(getSummary([{ amount: 10, paid: true }, { amount: 5, paid: false }]).planned === 5, 'Summary planned failed');
+      console.assert(!('count' in getSummary([])), 'Summary should not expose removed count field');
+      console.assert(els.summaryTotal instanceof HTMLElement, 'summaryTotal element missing');
+      console.assert(els.summaryPaid instanceof HTMLElement, 'summaryPaid element missing');
+      console.assert(els.summaryPlanned instanceof HTMLElement, 'summaryPlanned element missing');
+      console.assert(els.currentMonthBtn instanceof HTMLElement, 'currentMonthBtn element missing');
+      console.assert(els.paymentAmount instanceof HTMLElement, 'paymentAmount element missing');
+      console.assert(els.paymentDate instanceof HTMLElement, 'paymentDate element missing');
+      console.assert(els.paymentDateDisplay instanceof HTMLElement, 'paymentDateDisplay element missing');
+      console.assert(els.calendarPopover instanceof HTMLElement, 'calendarPopover element missing');
+      console.assert(getCalendarCells('2026-04').length === 42, 'Calendar cells failed');
+      console.assert(els.paymentMonth instanceof HTMLElement, 'paymentMonth element missing');
+      console.assert(els.paymentMonthDisplay instanceof HTMLElement, 'paymentMonthDisplay element missing');
+      console.assert(els.monthDropdown instanceof HTMLElement, 'monthDropdown element missing');
+      console.assert(els.paymentMonthToggle instanceof HTMLElement, 'paymentMonthToggle element missing');
+      console.assert(els.paymentTypeDropdown instanceof HTMLElement, 'paymentTypeDropdown element missing');
+      console.assert(els.paymentStatusDropdown instanceof HTMLElement, 'paymentStatusDropdown element missing');
+      console.assert(els.paymentDateFieldWrap instanceof HTMLElement, 'paymentDateFieldWrap element missing');
+      console.assert(els.paymentReceiptFieldWrap instanceof HTMLElement, 'paymentReceiptFieldWrap element missing');
+      console.assert(els.paymentRepeat instanceof HTMLElement, 'paymentRepeat element missing');
+      console.assert(els.paymentRepeatDropdown instanceof HTMLElement, 'paymentRepeatDropdown element missing');
+      console.assert(els.paymentReceipt instanceof HTMLElement, 'paymentReceipt element missing');
+      console.assert(PAYMENT_TYPE_ICONS.internet === 'wifi-high', 'Type icons mapping failed');
+      console.assert(PAYMENT_TYPE_ICONS.parking === 'car-profile', 'Parking icon mapping failed');
+      console.assert(PAYMENT_STATUS_LABELS.paid === 'Оплачено', 'Status labels mapping failed');
+      console.assert(getPhIconHtml('credit-card', 16).includes('ph-credit-card'), 'Pay action icon failed');
+      console.assert(humanDateLabel(getCurrentDate()) === 'Сегодня', 'Today label failed');
+      console.assert(monthLabel('2026-04').includes('Апрель') || monthLabel('2026-04').includes('апрель'), 'Human month label failed');
+      console.assert(document.querySelectorAll('.select-wrap').length >= 3, 'Custom select wrappers missing');
+      console.assert(typeof render === 'function', 'Render function missing');
+      console.assert(typeof bindEvents === 'function', 'bindEvents function missing');
+      console.assert(typeof closeAllDropdowns === 'function', 'closeAllDropdowns function missing');
+      console.assert(typeof openMarkPaidDialog === 'function', 'openMarkPaidDialog missing');
+      console.assert(typeof confirmMarkPaid === 'function', 'confirmMarkPaid missing');
+      console.assert(els.markPaidBackdrop instanceof HTMLElement, 'markPaidBackdrop element missing');
+      console.assert(els.markPaidDate instanceof HTMLElement, 'markPaidDate element missing');
+      console.assert(!String(bindEvents).includes("paymentTypeDisplay.addEventListener('click'"), 'Display click handler for type should be removed');
+      console.assert(!String(bindEvents).includes("paymentStatusDisplay.addEventListener('click'"), 'Display click handler for status should be removed');
+      console.assert(!String(bindEvents).includes("paymentMonthDisplay.addEventListener('click'"), 'Display click handler for month should be removed');
+      console.assert(typeof getStatusLabel === 'function', 'getStatusLabel missing');
+      console.assert(getStatusLabel({ paid: true }) === 'Оплачено', 'getStatusLabel paid failed');
+      console.assert(getStatusLabel({ paid: false }) === 'Запланировано', 'getStatusLabel planned failed');
+      console.assert(!getVisiblePayments().some((p) => p.paid === false && p.receipt), 'Planned payments should not require receipt');
+      console.assert(PAYMENT_REPEAT_LABELS.monthly_until_year_end === 'Каждый месяц', 'Repeat labels failed');
+      console.assert(sanitizePayments([{ repeat: 'monthly_until_year_end', type: 'rent' }])[0].repeat === 'monthly_until_year_end', 'Repeat sanitize failed');
+      if (els.paymentStatus) {
+        els.paymentStatus.value = 'planned';
+        syncStatusDependentFields();
+        console.assert(els.paymentDateFieldWrap.style.display === 'none', 'Date field should hide for planned');
+        console.assert(els.paymentReceiptFieldWrap.style.display === 'none', 'Receipt field should hide for planned');
+        els.paymentStatus.value = 'paid';
+        syncStatusDependentFields();
+        console.assert(els.paymentDateFieldWrap.style.display !== 'none', 'Date field should show for paid');
+        console.assert(els.paymentReceiptFieldWrap.style.display !== 'none', 'Receipt field should show for paid');
+      }
+      console.assert(!document.documentElement.outerHTML.includes('statusLabel</'), 'Unexpected statusLabel artifact found');
+      console.assert(getPhIconHtml('house-line', 14).includes('ph-house-line'), 'Badge icon html failed');
+      console.assert(sanitizePayments([{ type: 'rent', receipt: 'https://drive.google.com/file/d/123' }])[0].receipt.includes('drive.google.com'), 'Receipt sanitize failed');
+    }
+
+    runSanityChecks();
+    loadState();
+    bindEvents();
+    render();
+  </script>
+</body>
+</html>
